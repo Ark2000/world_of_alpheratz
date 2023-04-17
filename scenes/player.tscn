@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ow463smy5fi3"]
+
+[ext_resource type="Script" path="res://scripts/PlatformerPlayer.cs" id="1_cpe0l"]
+[ext_resource type="SpriteFrames" uid="uid://bfc8uumysdqg" path="res://resources/player_sprite_frames.tres" id="2_lpv23"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8dgac"]
+size = Vector2(12, 18)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "collisionShape2D")]
+collision_layer = 3
+script = ExtResource("1_cpe0l")
+animatedSprite = NodePath("AnimatedSprite2D")
+collisionShape2D = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_8dgac")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = ExtResource("2_lpv23")
+animation = &"ducking"

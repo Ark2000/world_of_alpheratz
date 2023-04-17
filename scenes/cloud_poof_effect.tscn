@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvmes5ly8ohy2"]
+
+[ext_resource type="SpriteFrames" uid="uid://bsl55fos1wwyf" path="res://resources/sprite_frames_cloud_poof.tres" id="1_ikby6"]
+[ext_resource type="Script" path="res://scripts/CloudPoofEffect.cs" id="2_kbwkg"]
+
+[node name="CloudPoofEffect" type="AnimatedSprite2D"]
+position = Vector2(50, 30)
+sprite_frames = ExtResource("1_ikby6")
+autoplay = "default"
+script = ExtResource("2_kbwkg")

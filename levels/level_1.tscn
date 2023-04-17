@@ -1,0 +1,134 @@
+[gd_scene load_steps=16 format=3 uid="uid://dc748wmejlc77"]
+
+[ext_resource type="TileSet" uid="uid://daay1h6wcq6kj" path="res://resources/tileset_level_1.tres" id="1_ptem6"]
+[ext_resource type="PackedScene" uid="uid://ow463smy5fi3" path="res://scenes/player.tscn" id="2_njbxm"]
+[ext_resource type="SpriteFrames" uid="uid://bfc8uumysdqg" path="res://resources/player_sprite_frames.tres" id="3_2imp5"]
+[ext_resource type="Script" path="res://scripts/HurtPlayer.cs" id="3_deokg"]
+[ext_resource type="Script" path="res://scripts/SecretArea.cs" id="4_24e7b"]
+[ext_resource type="Texture2D" uid="uid://c52bnbtxtxi1b" path="res://icon.svg" id="4_sxcdk"]
+[ext_resource type="Script" path="res://scripts/MobBub.cs" id="6_7o6kg"]
+[ext_resource type="Script" path="res://scripts/MobDevo.cs" id="8_gxcus"]
+[ext_resource type="Script" path="res://scripts/CollectableItem.cs" id="9_5iixj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_egfjj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbdd6"]
+size = Vector2(84, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8dgac"]
+size = Vector2(12, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5704"]
+size = Vector2(12, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55poy"]
+size = Vector2(14, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5y3vc"]
+
+[node name="level_1" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_ptem6")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 131072, 3, 1, 131072, 3, 2, 262144, 1, 3, 131072, 3, 4, 393216, 3, 5, 131072, 3, 6, 196608, 3, 7, 262144, 4, 8, 262144, 2, 9, 262144, 4, 10, 262144, 3, 11, 262144, 4, 12, 262144, 3, 13, 262144, 5, 65549, 131072, 4, 65548, 131072, 4, 65547, 131072, 4, 65546, 393216, 4, 65545, 393216, 4, 65544, 131072, 4, 65543, 393216, 4, 65542, 131072, 4, 65541, 393216, 4, 65540, 393216, 4, 65539, 262144, 6, 65538, 131072, 4, 65537, 393216, 4, 65536, 131072, 4, 65554, 131072, 4, 18, 131072, 3, 65553, 131072, 4, 17, 262144, 1, 65552, 131072, 4, 16, 131072, 3, 65551, 131072, 4, 15, 327680, 3, 65550, 131072, 4, 14, 262144, 5, -65527, 393216, 3, -65528, 393216, 3, -65529, 131072, 3, -65530, 196608, 1, -65521, 327680, 2, -131057, 458752, 3, -65522, 262144, 3, -131058, 262144, 1, -65523, 262144, 2, -131059, 131072, 3, -65524, 262144, 2, -131060, 393216, 3, -65525, 262144, 4, -131061, 393216, 3, -65526, 196608, 3, -131062, 196608, 1, 65562, 262144, 6, 26, 196608, 3, 65561, 131072, 4, 25, 262144, 1, 65560, 393216, 4, 24, 262144, 1, 65559, 262144, 6, 23, 327680, 3, 65558, 131072, 4, 22, 196608, 3, 65557, 131072, 4, 21, 131072, 3, 65556, 262144, 6, 20, 262144, 1, 65555, 131072, 4, 19, 393216, 3, -65513, 327680, 2, -131049, 327680, 2, -196585, 327680, 1, -65514, 196608, 5, -131050, 196608, 2, -196586, 196608, 1, 65572, 131072, 4, 36, 393216, 3, 65571, 393216, 4, 35, 262144, 1, 65570, 393216, 4, 34, 131072, 3, 65569, 393216, 4, 33, 262144, 1, 65568, 131072, 4, 32, 327680, 3, 65567, 393216, 4, 31, 196608, 3, 65566, 262144, 6, 30, 262144, 1, 65565, 131072, 4, 29, 262144, 1, 65564, 131072, 4, 28, 131072, 3, 65563, 393216, 4, 27, 327680, 3, -65509, 327680, 2, -131045, 327680, 2, -196581, 458752, 3, -65510, 196608, 5, -131046, 196608, 2, -196582, 196608, 1, -65504, 327680, 2, -131040, 327680, 5, -196576, 327680, 2, -262112, 327680, 5, -327648, 458752, 3, -65505, 196608, 5, -131041, 196608, 2, -196577, 196608, 5, -262113, 196608, 2, -327649, 196608, 1, 65577, 458752, 4, 41, 327680, 2, -65495, 327680, 5, -131031, 327680, 2, -196567, 327680, 2, -262103, 327680, 5, -327639, 327680, 2, -393175, 327680, 5, -458711, 327680, 2, -524247, 327680, 5, -589783, 458752, 3, 65576, 393216, 4, 40, 262144, 2, -65496, 262144, 5, -131032, 262144, 5, -196568, 262144, 3, -262104, 262144, 5, -327640, 262144, 5, -393176, 262144, 5, -458712, 262144, 2, -524248, 262144, 3, -589784, 262144, 1, 65575, 393216, 4, 39, 262144, 5, -65497, 262144, 2, -131033, 262144, 5, -196569, 262144, 2, -262105, 262144, 5, -327641, 262144, 3, -393177, 262144, 3, -458713, 262144, 3, -524249, 262144, 2, -589785, 131072, 3, 65574, 262144, 6, 38, 262144, 4, -65498, 262144, 5, -131034, 262144, 4, -196570, 262144, 4, -262106, 262144, 3, -327642, 262144, 2, -393178, 262144, 4, -458714, 262144, 2, -524250, 262144, 4, -589786, 393216, 3, 65573, 262144, 6, 37, 196608, 3, -65499, 196608, 2, -131035, 196608, 2, -196571, 524288, 7, -262107, 196608, 2, -327643, 196608, 2, -393179, 196608, 2, -458715, 196608, 5, -524251, 196608, 5, -589787, 65536, 3, -196572, 655360, 3, -196573, 589824, 3, 131071, 262144, 6, 65535, 393216, 3, 131070, 262144, 6, 65534, 393216, 3, 131069, 262144, 6, 65533, 393216, 3, 131068, 262144, 6, 65532, 131072, 3, 131067, 262144, 6, 65531, 393216, 3, 131066, 262144, 6, 65530, 393216, 3, 131065, 262144, 6, 65529, 131072, 3, 131064, 262144, 6, 65528, 327680, 3, 65527, 196608, 3, 131062, 393216, 4, 131061, 393216, 4, 131060, 262144, 6, 131059, 196608, 6, 131063, 393216, 4, 65526, 393216, 3, 65525, 262144, 1, 65524, 393216, 3, 65523, 65536, 3, -8, 327680, 5, -65544, 327680, 1, -9, 196608, 2, -65545, 65536, 3)
+
+[node name="Player" parent="." instance=ExtResource("2_njbxm")]
+position = Vector2(217, -36)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+
+[node name="HurtPlayer" type="Area2D" parent="."]
+position = Vector2(5, -11)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_deokg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtPlayer"]
+shape = SubResource("RectangleShape2D_egfjj")
+debug_color = Color(0.866667, 0, 0.862745, 0.419608)
+
+[node name="SecretArea" type="Area2D" parent="."]
+position = Vector2(111, -32)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_24e7b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecretArea"]
+shape = SubResource("RectangleShape2D_mbdd6")
+debug_color = Color(0.831373, 0.380392, 0.231373, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="SecretArea"]
+position = Vector2(-1, -9)
+scale = Vector2(0.554688, 0.390625)
+texture = ExtResource("4_sxcdk")
+
+[node name="Player2" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animatedSprite2D")]
+position = Vector2(296, -50)
+collision_layer = 3
+script = ExtResource("6_7o6kg")
+animatedSprite2D = NodePath("AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_8dgac")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player2"]
+position = Vector2(0, -16)
+sprite_frames = ExtResource("3_2imp5")
+animation = &"walking"
+autoplay = "walking"
+
+[node name="Player3" type="CharacterBody2D" parent="."]
+position = Vector2(190, -36)
+script = ExtResource("8_gxcus")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player3"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_f5704")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player3"]
+position = Vector2(0, -16)
+sprite_frames = ExtResource("3_2imp5")
+animation = &"standing"
+
+[node name="HurtPlayer2" type="Area2D" parent="Player3"]
+position = Vector2(1, -10)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_deokg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player3/HurtPlayer2"]
+position = Vector2(-1, 1.5)
+shape = SubResource("RectangleShape2D_55poy")
+debug_color = Color(0.866667, 0, 0.862745, 0.419608)
+
+[node name="Collectable" type="Area2D" parent="." node_paths=PackedStringArray("collisionShape2D")]
+position = Vector2(245, -57)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_5iixj")
+collisionShape2D = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable"]
+shape = SubResource("RectangleShape2D_5y3vc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Collectable"]
+scale = Vector2(0.133043, 0.131583)
+texture = ExtResource("4_sxcdk")
+
+[node name="Collectable5" type="Area2D" parent="." node_paths=PackedStringArray("collisionShape2D")]
+position = Vector2(240, -63)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_5iixj")
+collisionShape2D = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable5"]
+shape = SubResource("RectangleShape2D_5y3vc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Collectable5"]
+scale = Vector2(0.133043, 0.131583)
+texture = ExtResource("4_sxcdk")

@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcfopri73pp7h"]
+
+[ext_resource type="Texture2D" uid="uid://s2rbbnotdr4v" path="res://images/Speech_Emotes (16 x 16).png" id="1_hqmqa"]
+[ext_resource type="Script" path="res://scripts/EmoBubble.cs" id="1_yhf0y"]
+
+[sub_resource type="Animation" id="Animation_sunlk"]
+resource_name = "pop"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(0, -8), Vector2(0, -8), Vector2(0, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2yvqd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_waqbs"]
+_data = {
+"RESET": SubResource("Animation_2yvqd"),
+"pop": SubResource("Animation_sunlk")
+}
+
+[node name="EmoBubble" type="Sprite2D" node_paths=PackedStringArray("_anim")]
+texture = ExtResource("1_hqmqa")
+hframes = 9
+script = ExtResource("1_yhf0y")
+_anim = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_waqbs")
+}
