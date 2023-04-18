@@ -1,16 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://ow463smy5fi3"]
+[gd_scene load_steps=7 format=3 uid="uid://b0jkgjw7uy2i2"]
 
 [ext_resource type="Script" path="res://scripts/PlatformerPlayer.cs" id="1_cpe0l"]
-[ext_resource type="SpriteFrames" uid="uid://bfc8uumysdqg" path="res://resources/player_sprite_frames.tres" id="2_lpv23"]
+[ext_resource type="SpriteFrames" uid="uid://bfc8uumysdqg" path="res://resources/sprite_frames_player.tres" id="2_fba1q"]
+[ext_resource type="PackedScene" uid="uid://dcfopri73pp7h" path="res://scenes/emo_bubble.tscn" id="3_ko3q2"]
+[ext_resource type="Script" path="res://scripts/Killer.cs" id="4_4ppsc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dgac"]
 size = Vector2(12, 18)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "collisionShape2D")]
-collision_layer = 3
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0h5dk"]
+size = Vector2(12, 3)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "collisionShape2D", "emoBubble", "mobKiller")]
+collision_layer = 2
 script = ExtResource("1_cpe0l")
 animatedSprite = NodePath("AnimatedSprite2D")
 collisionShape2D = NodePath("CollisionShape2D")
+emoBubble = NodePath("EmoBubble")
+mobKiller = NodePath("Killer")
+
+[node name="EmoBubble" parent="." instance=ExtResource("3_ko3q2")]
+position = Vector2(0, -26)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -9)
@@ -18,5 +28,15 @@ shape = SubResource("RectangleShape2D_8dgac")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
-sprite_frames = ExtResource("2_lpv23")
+sprite_frames = ExtResource("2_fba1q")
 animation = &"ducking"
+
+[node name="Killer" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("4_4ppsc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killer"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_0h5dk")
+debug_color = Color(0.733333, 0.254902, 0.964706, 0.419608)

@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8hmpm33w5hvr"]
+
+[ext_resource type="Script" path="res://scripts/MobBub.cs" id="1_ac75v"]
+[ext_resource type="SpriteFrames" uid="uid://cu07b22jkrfmk" path="res://resources/sprite_frames_bub.tres" id="2_48hm3"]
+[ext_resource type="Script" path="res://scripts/Killer.cs" id="3_yx5od"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44skx"]
+size = Vector2(8, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rylga"]
+size = Vector2(12, 7)
+
+[node name="MobBub" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite2D", "collisionShape2D", "playerKiller")]
+collision_layer = 4
+collision_mask = 13
+script = ExtResource("1_ac75v")
+animatedSprite2D = NodePath("AnimatedSprite2D")
+collisionShape2D = NodePath("CollisionShape2D")
+playerKiller = NodePath("Killer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = ExtResource("2_48hm3")
+animation = &"running"
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+modulate = Color(1, 1, 1, 0.305882)
+position = Vector2(0, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_44skx")
+
+[node name="Killer" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_yx5od")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killer"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_rylga")
+debug_color = Color(0.54902, 0.407843, 0.988235, 0.419608)

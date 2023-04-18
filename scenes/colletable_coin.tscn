@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnf4pw77uqiuy"]
+
+[ext_resource type="SpriteFrames" uid="uid://lkrp2x6lh82n" path="res://resources/sprite_frames_coin.tres" id="1_7bjp1"]
+[ext_resource type="Script" path="res://scripts/CollectableItem.cs" id="1_mprje"]
+[ext_resource type="Script" path="res://scripts/RandomizedAnimatedSprite2D.cs" id="3_mpmmi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ci2w5"]
+
+[node name="ColletableCoin" type="Area2D" node_paths=PackedStringArray("collisionShape2D")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_mprje")
+collisionShape2D = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ci2w5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_7bjp1")
+autoplay = "default"
+frame_progress = 0.414546
+script = ExtResource("3_mpmmi")

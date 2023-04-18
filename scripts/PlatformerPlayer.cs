@@ -12,11 +12,14 @@ public enum PlayerState
 
 public partial class PlatformerPlayer : CharacterBody2D
 {
-
     [Export]
     public AnimatedSprite2D animatedSprite;
     [Export]
     public CollisionShape2D collisionShape2D;
+    [Export]
+    public EmoBubble emoBubble;
+    [Export]
+    public Killer mobKiller;
 
     [Export(PropertyHint.Range, "100.0, 500.0")]
     float ACCELERATION = 280.0f;
@@ -47,18 +50,31 @@ public partial class PlatformerPlayer : CharacterBody2D
 
     private PlayerState currentState = PlayerState.Standing;
 
+    public override void _Ready()
+    {
+        mobKiller.MobHurt += () => {
+            // Stomp attack like mario
+            Velocity = Velocity with {Y = -JUMP_FORCE};
+            if (GD.Randf() < 0.1f)
+            {
+                emoBubble.PlayEmo(3);
+            }
+        };
+    }
+
 	public string GetStateString()
 	{
 		return currentState.ToString();
 	}
 
-    public void Hurt()
+
+    public void Hurt(float impactX = 100.0f, float impactY = 200.0f)
     {
         if (is_invincible) return;
         float dir = animatedSprite.FlipH ? 1.0f : -1.0f;
         Vector2 newVelocity = Velocity;
-        newVelocity.X = dir * 100.0f;
-        newVelocity.Y = -200.0f;
+        newVelocity.X = dir * impactX;
+        newVelocity.Y = -impactY;
         Velocity = newVelocity;
 		
 		CreateTween().TweenCallback(Callable.From(() => {
@@ -68,6 +84,9 @@ public partial class PlatformerPlayer : CharacterBody2D
         // Create invincible animation
 		is_invincible = true;
 		Tween tween = CreateTween().SetLoops();
+
+        //Disable attack
+        mobKiller.GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
 
 		tween.TweenCallback(Callable.From(() => {
 			Modulate = Modulate with { A = 0.5f };
@@ -85,7 +104,13 @@ public partial class PlatformerPlayer : CharacterBody2D
             Tween tween2 = CreateTween();
             tween2.TweenCallback(Callable.From(() => collisionShape2D.SetDeferred("disabled", true))).SetDelay(0.01);
             tween2.TweenCallback(Callable.From(() => collisionShape2D.SetDeferred("disabled", false))).SetDelay(0.01);
+            //Enable attack
+            tween2.TweenCallback(Callable.From(() => mobKiller.GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", false))).SetDelay(0.02);
+            
+
 		})).SetDelay(INVINCIBLE_TIME);
+
+        emoBubble.PlayEmo(7);
     }
 
     public void UpdateState(float delta)

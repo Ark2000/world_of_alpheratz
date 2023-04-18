@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://ohjfqkb03m7x"]
+
+[ext_resource type="Texture2D" uid="uid://urpyt8uvhmo" path="res://images/Devo_Hurt (16 x 16).png" id="1_fmptx"]
+[ext_resource type="Texture2D" uid="uid://dpwav3xatpgvp" path="res://images/Devo_Standing (16 x 16).png" id="1_fqo3r"]
+[ext_resource type="Texture2D" uid="uid://eovrr53tlbn7" path="res://images/Devo_Jumping (16 x 16).png" id="2_ic8mq"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fmptx")
+}],
+"loop": true,
+"name": &"hurting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ic8mq")
+}],
+"loop": true,
+"name": &"jumping",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fqo3r")
+}],
+"loop": true,
+"name": &"standing",
+"speed": 5.0
+}]
