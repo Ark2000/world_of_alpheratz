@@ -2,7 +2,6 @@ using Godot;
 
 // Hurt player.
 // Teleport player to a specific location.
-
 public partial class Cliff : Area2D
 {
     [Export]
