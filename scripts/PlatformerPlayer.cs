@@ -24,13 +24,13 @@ public partial class PlatformerPlayer : CharacterBody2D
     [Export(PropertyHint.Range, "100.0, 500.0")]
     float ACCELERATION = 280.0f;
     [Export(PropertyHint.Range, "10.0, 100.0")]
-    float MAX_SPEED = 64.0f;
+    float MAX_SPEED = 72.0f;
     [Export(PropertyHint.Range, "1.0, 20.0")]
     float FRICTION = 10.0f;
     [Export(PropertyHint.Range, "0.0, 5.0")]
-    float AIR_RESISTANCE = 1.0f;
+    float AIR_RESISTANCE = 0.8f;
     [Export(PropertyHint.Range, "0.0, 500.0")]
-    float JUMP_FORCE = 260.0f;
+    float JUMP_FORCE = 270.0f;
     [Export(PropertyHint.Range, "0.1, 2.0, 0.1")]
     float GRAVITY_SCALE = 1.0f;
     [Export(PropertyHint.Range, "100.0, 200.0")]
@@ -116,7 +116,7 @@ public partial class PlatformerPlayer : CharacterBody2D
     public void UpdateState(float delta)
     {
         // Apply gravity
-        velocity.Y += _gravity * GRAVITY_SCALE * delta;
+        velocity.Y = Mathf.Min(velocity.Y + _gravity * GRAVITY_SCALE * delta, MAX_FALL_SPEED);
 
         // Apply horizontal movement
         if (currentState != PlayerState.Hurting && currentState != PlayerState.Ducking)
@@ -235,12 +235,10 @@ public partial class PlatformerPlayer : CharacterBody2D
             case PlayerState.Ducking:
                 animatedSprite.Play("ducking");
                 break;
-
-			// looks weird
-
-			// case PlayerState.Falling:
-			// 	animatedSprite.Animation = "falling";
-			// 	break;
+			case PlayerState.Falling:
+                if (velocity.Y > MAX_FALL_SPEED * 0.9)
+				    animatedSprite.Play("falling");
+				break;
         }
     }
 

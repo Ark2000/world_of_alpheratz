@@ -1,14 +1,18 @@
 using Godot;
 
-public partial class SecretArea : Area2D
+public partial class SecretArea : SpecialArea
 {
     public override void _Ready()
     {
+        base._Ready();
         Modulate = Modulate with { A = 1.0f };
-        BodyEntered += (Node2D body) => FadeOut();
-        BodyExited += (Node2D body) => FadeIn();
+        BodyEntered += (Node2D body) => {
+            FadeOut();
+        };
+        BodyExited += (Node2D body) => {
+            FadeIn();
+        };
     }
-
     public void FadeOut()
     {
         CreateTween().TweenProperty(this, "modulate:a", 0.2f, 0.5f);

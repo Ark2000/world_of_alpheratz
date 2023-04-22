@@ -13,12 +13,12 @@ config_version=5
 config/name="world_of_alpheratz"
 run/main_scene="res://levels/level_1.tscn"
 config/features=PackedStringArray("4.0", "C#", "Forward Plus")
+run/max_fps=30
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameWorld="*res://scripts/GameWorld.cs"
-Console="*res://addons/panku_console/console.tscn"
 
 [display]
 
@@ -26,6 +26,7 @@ window/size/viewport_width=864
 window/size/viewport_height=624
 window/size/always_on_top=true
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=2
 
 [dotnet]
 
@@ -72,11 +73,6 @@ right={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":51,"key_label":0,"unicode":51,"echo":false,"script":null)
 ]
 }
-toggle_console={
-"deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":96,"key_label":0,"unicode":0,"echo":false,"script":null)
-]
-}
 
 [layer_names]
 
@@ -85,6 +81,6 @@ toggle_console={
 2d_physics/layer_3="mob"
 2d_physics/layer_4="mob_obstacle"
 
-[panku]
+[rendering]
 
-toggle_console_action="toggle_console"
+anti_aliasing/quality/msaa_2d=3

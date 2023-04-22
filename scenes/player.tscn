@@ -29,7 +29,8 @@ shape = SubResource("RectangleShape2D_8dgac")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = ExtResource("2_fba1q")
-animation = &"ducking"
+animation = &"falling"
+frame_progress = 0.0838246
 
 [node name="Killer" type="Area2D" parent="."]
 collision_layer = 0
