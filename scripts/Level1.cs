@@ -6,6 +6,10 @@ public partial class Level1 : Node2D
     SpecialArea leftArea;
     [Export]
     Camera2D cam;
+    [Export]
+    InteractiveMessage rest;
+    [Export]
+    PlatformerPlayer player;
 
     public override void _PhysicsProcess(double delta)
     {
@@ -21,11 +25,18 @@ public partial class Level1 : Node2D
     {
         GameWorld.Instance.CoinCollected += () => GD.Print("[INFO] Coin collected!");
 
+        GameWorld.Instance.SecreteAreaFound += () => {
+            player.emoBubble.PlayEmo(2);
+        };
+
         leftArea.BodyEntered += (Node2D body) => {
             cam.LimitLeft -= 1000;
         };
         leftArea.BodyExited += (Node2D body) => {
             cam.LimitLeft += 1000;
+        };
+        rest.MessageActivated += () => {
+            GD.Print("[INFO] Rested!");
         };
     }
 }

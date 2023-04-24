@@ -12,14 +12,23 @@ public enum PlayerState
 
 public partial class PlatformerPlayer : CharacterBody2D
 {
+    [Signal]
+    public delegate void PlayerStateChangedEventHandler(PlayerState oldState, PlayerState newState);
+
     [Export]
     public AnimatedSprite2D animatedSprite;
+    [Export]
+    public Node2D spriteContainer;
     [Export]
     public CollisionShape2D collisionShape2D;
     [Export]
     public EmoBubble emoBubble;
     [Export]
     public Killer mobKiller;
+    [Export]
+    public GpuParticles2D leftWalkingDustParticles;
+    [Export]
+    public GpuParticles2D rightWalkingDustParticles;
 
     [Export(PropertyHint.Range, "100.0, 500.0")]
     float ACCELERATION = 280.0f;
@@ -38,6 +47,9 @@ public partial class PlatformerPlayer : CharacterBody2D
 
 	[Export(PropertyHint.Range, "0.1, 10.0")]
 	float INVINCIBLE_TIME = 2.0f;
+
+    [Export(PropertyHint.Range, "0.05, 1.0")]
+    float BOUNCY_SPRITE = 0.15f;
 
     float x_input = 0.0f;
     bool jump_pressed = false;
@@ -58,6 +70,21 @@ public partial class PlatformerPlayer : CharacterBody2D
             if (GD.Randf() < 0.1f)
             {
                 emoBubble.PlayEmo(3);
+            }
+        };
+
+        PlayerStateChanged += (PlayerState oldState, PlayerState newState) => {
+            // GD.Print("[INFO] Player state changed from " + oldState.ToString() + " to " + newState.ToString());
+
+            // Apply juicy bouncy animation when falling and jumping
+
+            if (newState == PlayerState.Jumping)
+            {
+                spriteContainer.Scale = new Vector2(0.5f, 1.5f);
+            }
+            if (oldState == PlayerState.Falling)
+            {
+                spriteContainer.Scale = new Vector2(1.25f, 0.75f);
             }
         };
     }
@@ -115,6 +142,8 @@ public partial class PlatformerPlayer : CharacterBody2D
 
     public void UpdateState(float delta)
     {
+        PlayerState oldState = currentState;
+
         // Apply gravity
         velocity.Y = Mathf.Min(velocity.Y + _gravity * GRAVITY_SCALE * delta, MAX_FALL_SPEED);
 
@@ -158,10 +187,6 @@ public partial class PlatformerPlayer : CharacterBody2D
                     {
                         currentState = PlayerState.Standing;
                     }
-                }
-                else
-                {
-                    currentState = PlayerState.Falling;
                 }
                 break;
             case PlayerState.Jumping:
@@ -210,6 +235,15 @@ public partial class PlatformerPlayer : CharacterBody2D
 					currentState = PlayerState.Ducking;
 				}
             }
+            else
+            {
+                currentState = PlayerState.Falling;
+            }
+        }
+
+        if (currentState != oldState)
+        {
+            EmitSignal(SignalName.PlayerStateChanged, (int)oldState, (int)currentState);
         }
     }
 
@@ -240,6 +274,12 @@ public partial class PlatformerPlayer : CharacterBody2D
 				    animatedSprite.Play("falling");
 				break;
         }
+
+        spriteContainer.Scale = spriteContainer.Scale.Lerp(Vector2.One, BOUNCY_SPRITE);
+
+        bool emitingDustParticles = (currentState == PlayerState.Walking && Mathf.Abs(Velocity.X) > MAX_SPEED * 0.99f);
+        leftWalkingDustParticles.Emitting = emitingDustParticles && Velocity.X > 0.0f;
+        rightWalkingDustParticles.Emitting = emitingDustParticles && Velocity.X < 0.0f;
     }
 
     public void UpdateInput()

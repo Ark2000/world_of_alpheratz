@@ -1,9 +1,58 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0jkgjw7uy2i2"]
+[gd_scene load_steps=14 format=3 uid="uid://b0jkgjw7uy2i2"]
 
 [ext_resource type="Script" path="res://scripts/PlatformerPlayer.cs" id="1_cpe0l"]
 [ext_resource type="SpriteFrames" uid="uid://bfc8uumysdqg" path="res://resources/sprite_frames_player.tres" id="2_fba1q"]
 [ext_resource type="PackedScene" uid="uid://dcfopri73pp7h" path="res://scenes/emo_bubble.tscn" id="3_ko3q2"]
 [ext_resource type="Script" path="res://scripts/Killer.cs" id="4_4ppsc"]
+[ext_resource type="Texture2D" uid="uid://cnnxrj8xeh7xl" path="res://images/Dust (16 x 16).png" id="5_ufpxr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1bf2b"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_hf0gd"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0hc17"]
+gradient = SubResource("Gradient_hf0gd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w0jcb"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 33.49
+initial_velocity_max = 33.49
+angular_velocity_max = 10.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 1.5
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_0hc17")
+anim_speed_min = 0.5
+anim_speed_max = 0.5
+
+[sub_resource type="CurveTexture" id="CurveTexture_st8nn"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1b5b6"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+angular_velocity_max = 10.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_max = 60.0
+scale_min = 1.5
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_0hc17")
+anim_speed_min = 0.5
+anim_speed_max = 0.5
+anim_offset_curve = SubResource("CurveTexture_st8nn")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dgac"]
 size = Vector2(12, 18)
@@ -11,13 +60,31 @@ size = Vector2(12, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0h5dk"]
 size = Vector2(12, 3)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "collisionShape2D", "emoBubble", "mobKiller")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "spriteContainer", "collisionShape2D", "emoBubble", "mobKiller", "leftWalkingDustParticles", "rightWalkingDustParticles")]
 collision_layer = 2
 script = ExtResource("1_cpe0l")
-animatedSprite = NodePath("AnimatedSprite2D")
+animatedSprite = NodePath("Node2D/AnimatedSprite2D")
+spriteContainer = NodePath("Node2D")
 collisionShape2D = NodePath("CollisionShape2D")
 emoBubble = NodePath("EmoBubble")
 mobKiller = NodePath("Killer")
+leftWalkingDustParticles = NodePath("LeftDustParticles2")
+rightWalkingDustParticles = NodePath("RightDustParticles")
+
+[node name="RightDustParticles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_1bf2b")
+position = Vector2(-4, -11)
+scale = Vector2(-1, 1)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_w0jcb")
+texture = ExtResource("5_ufpxr")
+
+[node name="LeftDustParticles2" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_1bf2b")
+position = Vector2(-12, -11)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_1b5b6")
+texture = ExtResource("5_ufpxr")
 
 [node name="EmoBubble" parent="." instance=ExtResource("3_ko3q2")]
 position = Vector2(0, -26)
@@ -26,11 +93,12 @@ position = Vector2(0, -26)
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_8dgac")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
 position = Vector2(0, -16)
 sprite_frames = ExtResource("2_fba1q")
-animation = &"falling"
-frame_progress = 0.0838246
+animation = &"ducking"
 
 [node name="Killer" type="Area2D" parent="."]
 collision_layer = 0

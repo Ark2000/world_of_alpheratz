@@ -42,6 +42,7 @@
 ./images/LilWiz_Jumping_(32 x 32).png
 ./images/LilWiz_Running_(32 x 32).png
 ./images/Magical_Orbs_Spell_(32 x 32).png
+./images/Dust (16 x 16).png
 ```
 
 ## License
@@ -66,4 +67,17 @@ CC0 1.0 terms - https://creativecommons.org/publicdomain/zero/1.0/
 Q:Can I use in my Game?
 A:If the game is non-profit / free / school project then you can use without a license. If the game is for profit / commerical then grab a license here:
 https://www.audiomicro.com/artist/heatleybros
+```
+# Kenny's Input Prompts Pixel 16×
+
+## Files
+
+```
+./images/kenny_input_prompts_16.png
+```
+
+## License
+
+```
+Creative Commons CC0
 ```

@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7uwgnqeotcrl"]
+
+[ext_resource type="Texture2D" uid="uid://dt52h3sdkefim" path="res://images/kenny_input_prompts_16.png" id="1_48kr2"]
+[ext_resource type="FontFile" uid="uid://g0840nh810ty" path="res://font/at01.ttf" id="1_v1dit"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7t4a"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sljj"]
+atlas = ExtResource("1_48kr2")
+region = Rect2(288, 32, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nedcf"]
+font = ExtResource("1_v1dit")
+font_size = 24
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gltct"]
+atlas = ExtResource("1_48kr2")
+region = Rect2(304, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8awg"]
+atlas = ExtResource("1_48kr2")
+region = Rect2(512, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p0rr"]
+atlas = ExtResource("1_48kr2")
+region = Rect2(272, 128, 16, 16)
+
+[node name="ContextBar" type="CanvasLayer"]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 32)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_l7t4a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+texture = SubResource("AtlasTexture_8sljj")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Up"
+label_settings = SubResource("LabelSettings_nedcf")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+texture = SubResource("AtlasTexture_gltct")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Down"
+label_settings = SubResource("LabelSettings_nedcf")
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+texture = SubResource("AtlasTexture_x8awg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label3" type="Label" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Confirm"
+label_settings = SubResource("LabelSettings_nedcf")
+
+[node name="TextureRect4" type="TextureRect" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+texture = SubResource("AtlasTexture_7p0rr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label4" type="Label" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+label_settings = SubResource("LabelSettings_nedcf")

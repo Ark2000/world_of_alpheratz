@@ -1,0 +1,275 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmas72b0mdbmi"]
+
+[ext_resource type="Script" path="res://scripts/GameMenu.cs" id="1_u36yv"]
+[ext_resource type="Script" path="res://scripts/RemapButton.cs" id="2_dnf8m"]
+
+[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("startButton", "quitButton")]
+script = ExtResource("1_u36yv")
+startButton = NodePath("MenuA/Button")
+quitButton = NodePath("MenuA/Button4")
+
+[node name="MenuA" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="MenuA"]
+layout_mode = 0
+offset_left = 407.0
+offset_top = 283.0
+offset_right = 452.0
+offset_bottom = 314.0
+text = "start"
+
+[node name="Button2" type="Button" parent="MenuA"]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 348.0
+offset_right = 449.0
+offset_bottom = 379.0
+text = "settings"
+
+[node name="Button3" type="Button" parent="MenuA"]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 411.0
+offset_right = 460.0
+offset_bottom = 442.0
+text = "about"
+
+[node name="Button4" type="Button" parent="MenuA"]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 466.0
+offset_right = 460.0
+offset_bottom = 497.0
+text = "quit"
+
+[node name="Settings" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Settings"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 304.0
+offset_right = 409.0
+offset_bottom = 330.0
+text = "SE Volume"
+
+[node name="Label2" type="Label" parent="Settings"]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 331.0
+offset_right = 431.0
+offset_bottom = 357.0
+text = "BGM Volume"
+
+[node name="Label3" type="Label" parent="Settings"]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 358.0
+offset_right = 485.0
+offset_bottom = 384.0
+text = "Menu Transparency"
+
+[node name="Label4" type="Label" parent="Settings"]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 392.0
+offset_right = 485.0
+offset_bottom = 418.0
+text = "Screen Size"
+
+[node name="HSlider" type="HSlider" parent="Settings"]
+layout_mode = 2
+offset_left = 424.0
+offset_top = 309.0
+offset_right = 514.0
+offset_bottom = 325.0
+value = 100.0
+
+[node name="HSlider2" type="HSlider" parent="Settings"]
+layout_mode = 2
+offset_left = 443.0
+offset_top = 337.0
+offset_right = 533.0
+offset_bottom = 353.0
+value = 100.0
+
+[node name="HSlider3" type="HSlider" parent="Settings"]
+layout_mode = 2
+offset_left = 493.0
+offset_top = 364.0
+offset_right = 583.0
+offset_bottom = 380.0
+value = 20.0
+
+[node name="OptionButton" type="OptionButton" parent="Settings"]
+layout_mode = 2
+offset_left = 426.0
+offset_top = 386.0
+offset_right = 516.0
+offset_bottom = 417.0
+item_count = 4
+selected = 0
+popup/item_0/text = "x1"
+popup/item_0/id = 0
+popup/item_1/text = "x2"
+popup/item_1/id = 1
+popup/item_2/text = "x3"
+popup/item_2/id = 2
+popup/item_3/text = "x4"
+popup/item_3/id = 3
+
+[node name="Button" type="Button" parent="Settings"]
+layout_mode = 2
+offset_left = 366.0
+offset_top = 420.0
+offset_right = 456.0
+offset_bottom = 451.0
+text = "Key Config"
+
+[node name="Button2" type="Button" parent="Settings"]
+layout_mode = 2
+offset_left = 369.0
+offset_top = 457.0
+offset_right = 459.0
+offset_bottom = 488.0
+text = "Reset"
+
+[node name="Button3" type="Button" parent="Settings"]
+layout_mode = 2
+offset_left = 373.0
+offset_top = 497.0
+offset_right = 463.0
+offset_bottom = 528.0
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 304.0
+offset_right = 368.0
+offset_bottom = 344.0
+
+[node name="KeyConfig" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="KeyConfig"]
+layout_mode = 0
+offset_left = 386.0
+offset_top = 327.0
+offset_right = 426.0
+offset_bottom = 353.0
+text = "Up"
+
+[node name="Label2" type="Label" parent="KeyConfig"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 356.0
+offset_right = 429.0
+offset_bottom = 382.0
+text = "Down"
+
+[node name="Label3" type="Label" parent="KeyConfig"]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 387.0
+offset_right = 428.0
+offset_bottom = 413.0
+text = "Left"
+
+[node name="Label4" type="Label" parent="KeyConfig"]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 421.0
+offset_right = 427.0
+offset_bottom = 447.0
+text = "Right"
+
+[node name="Label5" type="Label" parent="KeyConfig"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 456.0
+offset_right = 445.0
+offset_bottom = 482.0
+text = "Interact"
+
+[node name="Button" type="Button" parent="KeyConfig"]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 323.0
+offset_right = 445.0
+offset_bottom = 354.0
+toggle_mode = true
+text = "W"
+script = ExtResource("2_dnf8m")
+inputAction = "up"
+
+[node name="Button2" type="Button" parent="KeyConfig"]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 354.0
+offset_right = 474.0
+offset_bottom = 385.0
+toggle_mode = true
+text = "W"
+script = ExtResource("2_dnf8m")
+inputAction = "down"
+
+[node name="Button3" type="Button" parent="KeyConfig"]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 384.0
+offset_right = 455.0
+offset_bottom = 415.0
+toggle_mode = true
+text = "left"
+script = ExtResource("2_dnf8m")
+inputAction = "left"
+
+[node name="Button4" type="Button" parent="KeyConfig"]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 421.0
+offset_right = 455.0
+offset_bottom = 452.0
+toggle_mode = true
+script = ExtResource("2_dnf8m")
+inputAction = "right"
+
+[node name="Button5" type="Button" parent="KeyConfig"]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 452.0
+offset_right = 481.0
+offset_bottom = 483.0
+toggle_mode = true
+text = "W"
+script = ExtResource("2_dnf8m")
+inputAction = "interact"
+
+[node name="Button6" type="Button" parent="KeyConfig"]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 522.0
+offset_right = 450.0
+offset_bottom = 553.0
+text = "Back"
+
+[node name="Button7" type="Button" parent="KeyConfig"]
+layout_mode = 0
+offset_left = 402.0
+offset_top = 485.0
+offset_right = 453.0
+offset_bottom = 516.0
+text = "Reset"
