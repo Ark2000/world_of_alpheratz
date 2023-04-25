@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct137uwtj6xhx"]
+
+[ext_resource type="Script" path="res://scripts/FirstScene.cs" id="1_ui72l"]
+[ext_resource type="FontFile" uid="uid://g0840nh810ty" path="res://font/at01.ttf" id="2_gunuj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ruhi"]
+font = ExtResource("2_gunuj")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="FirstScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ui72l")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "United Evils of Andromeda"
+label_settings = SubResource("LabelSettings_5ruhi")
+horizontal_alignment = 1
+vertical_alignment = 1

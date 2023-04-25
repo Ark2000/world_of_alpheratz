@@ -1,22 +1,101 @@
-[gd_scene load_steps=3 format=3 uid="uid://btunb0s2pkqp6"]
+[gd_scene load_steps=19 format=3 uid="uid://btunb0s2pkqp6"]
 
+[ext_resource type="Texture2D" uid="uid://cky6ed4im046" path="res://images/Grassland_5 - Sky_color.png" id="1_8fguj"]
+[ext_resource type="Script" path="res://scripts/TitleScene.cs" id="1_31re5"]
 [ext_resource type="PackedScene" uid="uid://cmas72b0mdbmi" path="res://scenes/game_menu.tscn" id="1_kv5vj"]
+[ext_resource type="Texture2D" uid="uid://dwmrcdo2ublpk" path="res://images/Grassland_4 - Cloud_cover_2.png" id="2_einia"]
+[ext_resource type="Texture2D" uid="uid://d251fg2jk2oo7" path="res://images/Grassland_3 - Cloud_cover_1.png" id="3_co40g"]
+[ext_resource type="Texture2D" uid="uid://crbhqjpv4cu42" path="res://images/Grassland_2 - Hills.png" id="4_cxy28"]
+[ext_resource type="Texture2D" uid="uid://bbvj1q06jx5fn" path="res://images/Grassland_1 - Foreground_scenery.png" id="5_u3tdd"]
+[ext_resource type="Texture2D" uid="uid://ci1jlb11v785" path="res://images/logo.png" id="7_vxko2"]
+[ext_resource type="FontFile" uid="uid://g0840nh810ty" path="res://font/at01.ttf" id="8_3ft3o"]
+[ext_resource type="PackedScene" uid="uid://b0jkgjw7uy2i2" path="res://scenes/player.tscn" id="9_635g1"]
+[ext_resource type="PackedScene" uid="uid://kjmpyycjo34" path="res://scenes/infinite_road.tscn" id="10_13u80"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_x4fhq"]
-font_size = 48
-outline_size = 2
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="Animation" id="Animation_4r46o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Cloud:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
-[node name="TitleScene" type="Control"]
+[sub_resource type="Animation" id="Animation_pviq1"]
+resource_name = "clouds"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Cloud:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-864, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kmem2"]
+_data = {
+"RESET": SubResource("Animation_4r46o"),
+"clouds": SubResource("Animation_pviq1")
+}
+
+[sub_resource type="Animation" id="Animation_i1e5k"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_f4x8u"]
+resource_name = "title"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/Title:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.195357, 12.5, 0, -0.204639, 12.5, 0.193016, -12.7151, 0, -0.202071, -13.0421, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_quuai"]
+_data = {
+"RESET": SubResource("Animation_i1e5k"),
+"title": SubResource("Animation_f4x8u")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_jydb5"]
+font = ExtResource("8_3ft3o")
+font_size = 24
+font_color = Color(1, 1, 1, 0.501961)
+shadow_color = Color(0, 0, 0, 0.0784314)
+
+[node name="TitleScene" type="Control" node_paths=PackedStringArray("player", "menu", "logo")]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_31re5")
+player = NodePath("Player")
+menu = NodePath("GameMenu")
+logo = NodePath("CanvasLayer/Control")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,20 +103,117 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0.160784, 1)
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -216.0
-offset_top = -200.0
-offset_right = 216.0
-offset_bottom = -130.0
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "World of Alpheratz"
-label_settings = SubResource("LabelSettings_x4fhq")
+texture = ExtResource("1_8fguj")
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_einia")
+
+[node name="Cloud" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -287.995
+offset_bottom = -438.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture = ExtResource("3_co40g")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_cxy28")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_u3tdd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+root_node = NodePath("../..")
+autoplay = "clouds"
+speed_scale = 0.04
+libraries = {
+"": SubResource("AnimationLibrary_kmem2")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="CanvasLayer"]
+root_node = NodePath("../..")
+autoplay = "title"
+speed_scale = 0.5
+libraries = {
+"": SubResource("AnimationLibrary_quuai")
+}
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer"]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 85.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 0.000244141
+offset_bottom = 148.999
+grow_horizontal = 2
+pivot_offset = Vector2(0, 74)
+texture = ExtResource("7_vxko2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InfiniteRoad" parent="." instance=ExtResource("10_13u80")]
+
+[node name="Player" parent="." instance=ExtResource("9_635g1")]
+position = Vector2(209, 518)
+ACCELERATION = 150.0
+MAX_SPEED = 42.0
+scriptedInput = true
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(63, -57)
+zoom = Vector2(4, 4)
 
 [node name="GameMenu" parent="." instance=ExtResource("1_kv5vj")]
+layer = 0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Version" type="Label" parent="CanvasLayer2"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -102.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "v0.1.0.20230425"
+label_settings = SubResource("LabelSettings_jydb5")

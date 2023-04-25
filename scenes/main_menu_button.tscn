@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1p51duu5p5tf"]
+
+[ext_resource type="FontFile" uid="uid://g0840nh810ty" path="res://font/at01.ttf" id="1_3peyb"]
+
+[sub_resource type="FontVariation" id="FontVariation_ndfwc"]
+base_font = ExtResource("1_3peyb")
+spacing_top = 2
+spacing_bottom = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r85ny"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dqker"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vi0e8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qosqq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn0y2"]
+bg_color = Color(0.6, 0.6, 0.6, 0.0941176)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 0.784314)
+
+[node name="Button" type="Button"]
+theme_override_colors/font_focus_color = Color(0.254902, 0.627451, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_ndfwc")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r85ny")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dqker")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vi0e8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qosqq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jn0y2")
+text = "Start"

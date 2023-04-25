@@ -9,11 +9,18 @@ public partial class RemapButton : Button
 
     public override void _Ready()
     {
-		// Read the key from the config file
-		Key key = (Key)(long)GameWorld.Instance.configFile.GetValue(GameWorld.ConfigSection_Keybindings, inputAction);
-		Text = "Key " + OS.GetKeycodeString(key);
+		UpdateState();
 		SetProcessUnhandledKeyInput(false);
 		Toggled += OnButtonToggled;
+		AddToGroup("remap_buttons");
+	}
+
+	public void UpdateState()
+	{
+		// Read the key from config file
+		Key key = (Key)(long)GameWorld.Instance.configFile.GetValue(GameWorld.ConfigSection_Keybindings, inputAction);
+		Text = "Key " + OS.GetKeycodeString(key);
+
 	}
 
 	public override void _UnhandledKeyInput(InputEvent @event)
@@ -21,8 +28,7 @@ public partial class RemapButton : Button
 		InputEventKey keyEvent = @event as InputEventKey;
 		ButtonPressed = false;
 		Text = "Key " + OS.GetKeycodeString(keyEvent.Keycode);
-		// Save the key to the config file
-		GameWorld.Instance.configFile.SetValue(GameWorld.ConfigSection_Keybindings, inputAction, (long)keyEvent.Keycode);
+		GameWorld.Instance.RemapKey(inputAction, keyEvent.Keycode);
 	}
 
 	private void OnButtonToggled(bool buttonPressed)

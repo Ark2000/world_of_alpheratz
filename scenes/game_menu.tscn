@@ -1,275 +1,424 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmas72b0mdbmi"]
+[gd_scene load_steps=14 format=3 uid="uid://cmas72b0mdbmi"]
 
 [ext_resource type="Script" path="res://scripts/GameMenu.cs" id="1_u36yv"]
+[ext_resource type="Texture2D" uid="uid://dtmwhnsc4msjk" path="res://images/border.png" id="2_dne06"]
 [ext_resource type="Script" path="res://scripts/RemapButton.cs" id="2_dnf8m"]
+[ext_resource type="PackedScene" uid="uid://b1p51duu5p5tf" path="res://scenes/main_menu_button.tscn" id="3_axtap"]
+[ext_resource type="FontFile" uid="uid://g0840nh810ty" path="res://font/at01.ttf" id="3_mpeam"]
+[ext_resource type="Texture2D" uid="uid://d30gaflckswk2" path="res://images/link.png" id="4_bns63"]
+[ext_resource type="Texture2D" uid="uid://v5pkw6bkrwln" path="res://images/checkbox_checked.png" id="5_fmnip"]
+[ext_resource type="PackedScene" uid="uid://dtw0cvjnbyewd" path="res://scenes/menu_slider.tscn" id="5_j40k5"]
+[ext_resource type="Texture2D" uid="uid://b71f43mk44tdi" path="res://images/checkbox_unchecked.png" id="6_euawa"]
 
-[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("startButton", "quitButton")]
+[sub_resource type="ButtonGroup" id="ButtonGroup_8c4ww"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_it7ra"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+shadow_color = Color(0, 0, 0.0941176, 0.627451)
+shadow_size = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_apn8j"]
+font = ExtResource("3_mpeam")
+font_size = 32
+outline_size = 8
+outline_color = Color(0, 0, 0, 0.811765)
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.12549)
+
+[sub_resource type="LabelSettings" id="LabelSettings_77pv6"]
+font = ExtResource("3_mpeam")
+font_size = 24
+
+[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("topMenu", "settingsMenu", "keyConfigMenu", "startButton", "settingsButton", "aboutButton", "quitButton", "settingsBackButton", "keyConfigButton", "keyConfigBackButton", "resetKeysButton", "seVolumeSlider", "bgmVolumeSlider", "menuOpacitySlider", "resetMiscButton")]
 script = ExtResource("1_u36yv")
-startButton = NodePath("MenuA/Button")
-quitButton = NodePath("MenuA/Button4")
+topMenu = NodePath("TopMenu")
+settingsMenu = NodePath("Settings")
+keyConfigMenu = NodePath("KeyConfig")
+startButton = NodePath("TopMenu/NinePatchRect/MarginContainer/VBoxContainer/Button")
+settingsButton = NodePath("TopMenu/NinePatchRect/MarginContainer/VBoxContainer/Button2")
+aboutButton = NodePath("TopMenu/NinePatchRect/MarginContainer/VBoxContainer/Button3")
+quitButton = NodePath("TopMenu/NinePatchRect/MarginContainer/VBoxContainer/Button4")
+settingsBackButton = NodePath("Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/Button3")
+keyConfigButton = NodePath("Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/Button2")
+keyConfigBackButton = NodePath("KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer/Button2")
+resetKeysButton = NodePath("KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer/Button")
+seVolumeSlider = NodePath("Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/HSlider")
+bgmVolumeSlider = NodePath("Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2/HSlider2")
+menuOpacitySlider = NodePath("Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer3/HSlider3")
+windowScaleButtons = SubResource("ButtonGroup_8c4ww")
+resetMiscButton = NodePath("Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/Button")
 
-[node name="MenuA" type="Control" parent="."]
+[node name="TopMenu" type="PanelContainer" parent="."]
 visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.5
+offset_top = 68.0
+offset_right = 91.5
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_it7ra")
 
-[node name="Button" type="Button" parent="MenuA"]
-layout_mode = 0
-offset_left = 407.0
-offset_top = 283.0
-offset_right = 452.0
-offset_bottom = 314.0
-text = "start"
+[node name="NinePatchRect" type="NinePatchRect" parent="TopMenu"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dne06")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
 
-[node name="Button2" type="Button" parent="MenuA"]
-layout_mode = 0
-offset_left = 404.0
-offset_top = 348.0
-offset_right = 449.0
-offset_bottom = 379.0
-text = "settings"
+[node name="MarginContainer" type="MarginContainer" parent="TopMenu/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
-[node name="Button3" type="Button" parent="MenuA"]
-layout_mode = 0
-offset_left = 406.0
-offset_top = 411.0
-offset_right = 460.0
-offset_bottom = 442.0
-text = "about"
+[node name="VBoxContainer" type="VBoxContainer" parent="TopMenu/NinePatchRect/MarginContainer"]
+layout_mode = 2
 
-[node name="Button4" type="Button" parent="MenuA"]
-layout_mode = 0
-offset_left = 406.0
-offset_top = 466.0
-offset_right = 460.0
-offset_bottom = 497.0
-text = "quit"
+[node name="Button" parent="TopMenu/NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("3_axtap")]
+layout_mode = 2
+text = "New Journey"
+
+[node name="Button2" parent="TopMenu/NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("3_axtap")]
+layout_mode = 2
+text = "Game Settings"
+
+[node name="Button3" parent="TopMenu/NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("3_axtap")]
+layout_mode = 2
+text = "Source Code"
+icon = ExtResource("4_bns63")
+
+[node name="Button4" parent="TopMenu/NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("3_axtap")]
+layout_mode = 2
+text = "Quit Game"
 
 [node name="Settings" type="Control" parent="."]
-visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = 14.0
+offset_right = 160.5
+offset_bottom = 257.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="Settings"]
+layout_mode = 1
+offset_right = 322.0
+offset_bottom = 29.0
+text = "Game Settings"
+label_settings = SubResource("LabelSettings_apn8j")
+
+[node name="Panel" type="PanelContainer" parent="Settings"]
+show_behind_parent = true
 layout_mode = 0
-offset_left = 328.0
-offset_top = 304.0
-offset_right = 409.0
-offset_bottom = 330.0
+offset_top = 28.0
+offset_right = 322.0
+offset_bottom = 244.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_it7ra")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Settings/Panel"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dne06")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings/Panel/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/Panel/NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
 text = "SE Volume"
+label_settings = SubResource("LabelSettings_77pv6")
 
-[node name="Label2" type="Label" parent="Settings"]
-layout_mode = 0
-offset_left = 331.0
-offset_top = 331.0
-offset_right = 431.0
-offset_bottom = 357.0
+[node name="HSlider" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_j40k5")]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
 text = "BGM Volume"
+label_settings = SubResource("LabelSettings_77pv6")
 
-[node name="Label3" type="Label" parent="Settings"]
-layout_mode = 0
-offset_left = 331.0
-offset_top = 358.0
-offset_right = 485.0
-offset_bottom = 384.0
-text = "Menu Transparency"
-
-[node name="Label4" type="Label" parent="Settings"]
-layout_mode = 0
-offset_left = 331.0
-offset_top = 392.0
-offset_right = 485.0
-offset_bottom = 418.0
-text = "Screen Size"
-
-[node name="HSlider" type="HSlider" parent="Settings"]
+[node name="HSlider2" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("5_j40k5")]
 layout_mode = 2
-offset_left = 424.0
-offset_top = 309.0
-offset_right = 514.0
-offset_bottom = 325.0
-value = 100.0
+max_value = 1.0
+step = 0.1
+value = 1.0
 
-[node name="HSlider2" type="HSlider" parent="Settings"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
-offset_left = 443.0
-offset_top = 337.0
-offset_right = 533.0
-offset_bottom = 353.0
-value = 100.0
 
-[node name="HSlider3" type="HSlider" parent="Settings"]
+[node name="Label" type="Label" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
-offset_left = 493.0
-offset_top = 364.0
-offset_right = 583.0
-offset_bottom = 380.0
-value = 20.0
+text = "Menu Opacity"
+label_settings = SubResource("LabelSettings_77pv6")
 
-[node name="OptionButton" type="OptionButton" parent="Settings"]
+[node name="HSlider3" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("5_j40k5")]
 layout_mode = 2
-offset_left = 426.0
-offset_top = 386.0
-offset_right = 516.0
-offset_bottom = 417.0
-item_count = 4
-selected = 0
-popup/item_0/text = "x1"
-popup/item_0/id = 0
-popup/item_1/text = "x2"
-popup/item_1/id = 1
-popup/item_2/text = "x3"
-popup/item_2/id = 2
-popup/item_3/text = "x4"
-popup/item_3/id = 3
+max_value = 1.0
+step = 0.1
+value = 1.0
 
-[node name="Button" type="Button" parent="Settings"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
-offset_left = 366.0
-offset_top = 420.0
-offset_right = 456.0
-offset_bottom = 451.0
-text = "Key Config"
 
-[node name="Button2" type="Button" parent="Settings"]
+[node name="Label" type="Label" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
-offset_left = 369.0
-offset_top = 457.0
-offset_right = 459.0
-offset_bottom = 488.0
-text = "Reset"
+text = "Window Scale"
+label_settings = SubResource("LabelSettings_77pv6")
 
-[node name="Button3" type="Button" parent="Settings"]
+[node name="1" type="CheckBox" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
-offset_left = 373.0
-offset_top = 497.0
-offset_right = 463.0
-offset_bottom = 528.0
+theme_override_fonts/font = ExtResource("3_mpeam")
+theme_override_font_sizes/font_size = 24
+theme_override_icons/radio_checked = ExtResource("5_fmnip")
+theme_override_icons/radio_unchecked = ExtResource("6_euawa")
+button_pressed = true
+button_group = SubResource("ButtonGroup_8c4ww")
+text = "1x"
+
+[node name="2" type="CheckBox" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mpeam")
+theme_override_font_sizes/font_size = 24
+theme_override_icons/radio_checked = ExtResource("5_fmnip")
+theme_override_icons/radio_unchecked = ExtResource("6_euawa")
+button_group = SubResource("ButtonGroup_8c4ww")
+text = "2x"
+
+[node name="3" type="CheckBox" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mpeam")
+theme_override_font_sizes/font_size = 24
+theme_override_icons/radio_checked = ExtResource("5_fmnip")
+theme_override_icons/radio_unchecked = ExtResource("6_euawa")
+button_group = SubResource("ButtonGroup_8c4ww")
+text = "3x"
+
+[node name="Button" type="Button" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mpeam")
+theme_override_font_sizes/font_size = 24
+text = "Reset Above"
+flat = true
+
+[node name="Button2" type="Button" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mpeam")
+theme_override_font_sizes/font_size = 24
+text = "Keyboard Config"
+flat = true
+
+[node name="Button3" type="Button" parent="Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mpeam")
+theme_override_font_sizes/font_size = 24
 text = "Back"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
-layout_mode = 0
-offset_left = 328.0
-offset_top = 304.0
-offset_right = 368.0
-offset_bottom = 344.0
+flat = true
 
 [node name="KeyConfig" type="Control" parent="."]
+visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.5
+offset_top = -8.0
+offset_right = 116.5
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="KeyConfig"]
+layout_mode = 1
+offset_right = 322.0
+offset_bottom = 29.0
+text = "Key Config"
+label_settings = SubResource("LabelSettings_apn8j")
+
+[node name="Panel" type="PanelContainer" parent="KeyConfig"]
+show_behind_parent = true
 layout_mode = 0
-offset_left = 386.0
-offset_top = 327.0
-offset_right = 426.0
-offset_bottom = 353.0
+offset_top = 28.0
+offset_right = 234.0
+offset_bottom = 265.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_it7ra")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="KeyConfig/Panel"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dne06")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="KeyConfig/Panel/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="KeyConfig/Panel/NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
 text = "Up"
+label_settings = SubResource("LabelSettings_77pv6")
 
-[node name="Label2" type="Label" parent="KeyConfig"]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 356.0
-offset_right = 429.0
-offset_bottom = 382.0
-text = "Down"
-
-[node name="Label3" type="Label" parent="KeyConfig"]
-layout_mode = 0
-offset_left = 383.0
-offset_top = 387.0
-offset_right = 428.0
-offset_bottom = 413.0
-text = "Left"
-
-[node name="Label4" type="Label" parent="KeyConfig"]
-layout_mode = 0
-offset_left = 382.0
-offset_top = 421.0
-offset_right = 427.0
-offset_bottom = 447.0
-text = "Right"
-
-[node name="Label5" type="Label" parent="KeyConfig"]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 456.0
-offset_right = 445.0
-offset_bottom = 482.0
-text = "Interact"
-
-[node name="Button" type="Button" parent="KeyConfig"]
-layout_mode = 0
-offset_left = 421.0
-offset_top = 323.0
-offset_right = 445.0
-offset_bottom = 354.0
+[node name="Up" type="Button" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_mpeam")
+theme_override_font_sizes/font_size = 24
 toggle_mode = true
-text = "W"
 script = ExtResource("2_dnf8m")
 inputAction = "up"
 
-[node name="Button2" type="Button" parent="KeyConfig"]
-layout_mode = 0
-offset_left = 450.0
-offset_top = 354.0
-offset_right = 474.0
-offset_bottom = 385.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+text = "Down"
+label_settings = SubResource("LabelSettings_77pv6")
+
+[node name="Down" type="Button" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_mpeam")
+theme_override_font_sizes/font_size = 24
 toggle_mode = true
-text = "W"
+text = "Key W"
 script = ExtResource("2_dnf8m")
 inputAction = "down"
 
-[node name="Button3" type="Button" parent="KeyConfig"]
-layout_mode = 0
-offset_left = 421.0
-offset_top = 384.0
-offset_right = 455.0
-offset_bottom = 415.0
+[node name="HBoxContainer3" type="HBoxContainer" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+text = "Left"
+label_settings = SubResource("LabelSettings_77pv6")
+
+[node name="Left" type="Button" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_mpeam")
+theme_override_font_sizes/font_size = 24
 toggle_mode = true
-text = "left"
+text = "Key W"
 script = ExtResource("2_dnf8m")
 inputAction = "left"
 
-[node name="Button4" type="Button" parent="KeyConfig"]
-layout_mode = 0
-offset_left = 431.0
-offset_top = 421.0
-offset_right = 455.0
-offset_bottom = 452.0
+[node name="HBoxContainer4" type="HBoxContainer" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+text = "Right"
+label_settings = SubResource("LabelSettings_77pv6")
+
+[node name="Right" type="Button" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_mpeam")
+theme_override_font_sizes/font_size = 24
 toggle_mode = true
+text = "Key W"
 script = ExtResource("2_dnf8m")
 inputAction = "right"
 
-[node name="Button5" type="Button" parent="KeyConfig"]
-layout_mode = 0
-offset_left = 457.0
-offset_top = 452.0
-offset_right = 481.0
-offset_bottom = 483.0
+[node name="HBoxContainer5" type="HBoxContainer" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+text = "Interact"
+label_settings = SubResource("LabelSettings_77pv6")
+
+[node name="Interact" type="Button" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_mpeam")
+theme_override_font_sizes/font_size = 24
 toggle_mode = true
-text = "W"
+text = "Key W"
 script = ExtResource("2_dnf8m")
 inputAction = "interact"
 
-[node name="Button6" type="Button" parent="KeyConfig"]
-layout_mode = 0
-offset_left = 405.0
-offset_top = 522.0
-offset_right = 450.0
-offset_bottom = 553.0
-text = "Back"
+[node name="Button" type="Button" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mpeam")
+theme_override_font_sizes/font_size = 24
+text = "Reset Keys"
+flat = true
 
-[node name="Button7" type="Button" parent="KeyConfig"]
-layout_mode = 0
-offset_left = 402.0
-offset_top = 485.0
-offset_right = 453.0
-offset_bottom = 516.0
-text = "Reset"
+[node name="Button2" type="Button" parent="KeyConfig/Panel/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mpeam")
+theme_override_font_sizes/font_size = 24
+text = "Back"
+flat = true

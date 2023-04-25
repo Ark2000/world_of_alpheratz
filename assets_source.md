@@ -81,3 +81,10 @@ https://www.audiomicro.com/artist/heatleybros
 ```
 Creative Commons CC0
 ```
+
+# Others
+
+``` Files
+./images/logo.png
+// generated using https://inkpx.com/templates/lv5/twitter-text-effect
+```

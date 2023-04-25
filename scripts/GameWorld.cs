@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 
 // Singleton
 public partial class GameWorld : Node
@@ -11,6 +12,20 @@ public partial class GameWorld : Node
     public static string InputAction_Left= "left";
     public static string InputAction_Right = "right";
     public static string InputAction_Interact = "interact";
+    public static string ConfigSection_Misc = "misc";
+    public static string Misc_SE = "se_volume";
+    public static string Misc_BGM = "bgm_volume";
+    public static string Misc_MenuOpacity = "menu_opacity";
+    public static string Misc_WindowScale = "window_scale";
+
+    private static Dictionary<string, Key> defaultKeybindings = new Dictionary<string, Key>()
+    {
+        { InputAction_Up, Key.W },
+        { InputAction_Down, Key.S },
+        { InputAction_Left, Key.A },
+        { InputAction_Right, Key.D },
+        { InputAction_Interact, Key.E },
+    };
 
     [Signal]
     public delegate void CoinCollectedEventHandler();
@@ -26,7 +41,7 @@ public partial class GameWorld : Node
     [Export]
     public ColorRect colorRect;
 
-    public ConfigFile configFile;
+    public ConfigFile configFile = new ConfigFile();
 
     public static GameWorld Instance { get; private set; }
 
@@ -69,30 +84,103 @@ public partial class GameWorld : Node
 
     public void LoadConfig()
     {
-        configFile = new ConfigFile();
         Error err = configFile.Load(ConfigFilePath);
 
         if (err != Error.Ok)
         {
-            // Create a new config file
-            configFile.SetValue(ConfigSection_Keybindings, InputAction_Up, (long) Key.W);
-            configFile.SetValue(ConfigSection_Keybindings, InputAction_Down, (long) Key.S);
-            configFile.SetValue(ConfigSection_Keybindings, InputAction_Left, (long) Key.A);
-            configFile.SetValue(ConfigSection_Keybindings, InputAction_Right, (long) Key.D);
-            configFile.SetValue(ConfigSection_Keybindings, InputAction_Interact, (long) Key.E);
+            // Apply default configs
+
+            foreach(var keybinding in defaultKeybindings)
+            {
+                configFile.SetValue(ConfigSection_Keybindings, keybinding.Key, (long)keybinding.Value);
+            }
+
+            ResetMisc();
         }
 
         // Apply keybindings
+        InputEventKey keyEvent;
+
+        keyEvent = new InputEventKey() {Keycode = ((Key)(long)configFile.GetValue(ConfigSection_Keybindings, InputAction_Up)), Pressed = true};
         InputMap.AddAction(InputAction_Up);
-        InputMap.ActionAddEvent(InputAction_Up, new InputEventKey() {Keycode = ((Key)(long)configFile.GetValue(ConfigSection_Keybindings, InputAction_Up)), Pressed = true});
+        InputMap.ActionAddEvent(InputAction_Up, keyEvent);
+        InputMap.ActionAddEvent("ui_up", keyEvent);
+
+        keyEvent = new InputEventKey() {Keycode = ((Key)(long)configFile.GetValue(ConfigSection_Keybindings, InputAction_Down)), Pressed = true};
         InputMap.AddAction(InputAction_Down);
-        InputMap.ActionAddEvent(InputAction_Down, new InputEventKey() {Keycode = ((Key)(long)configFile.GetValue(ConfigSection_Keybindings, InputAction_Down)), Pressed = true});
+        InputMap.ActionAddEvent(InputAction_Down, keyEvent);
+        InputMap.ActionAddEvent("ui_down", keyEvent);
+
+        keyEvent = new InputEventKey() {Keycode = ((Key)(long)configFile.GetValue(ConfigSection_Keybindings, InputAction_Left)), Pressed = true};
         InputMap.AddAction(InputAction_Left);
-        InputMap.ActionAddEvent(InputAction_Left, new InputEventKey() {Keycode = ((Key)(long)configFile.GetValue(ConfigSection_Keybindings, InputAction_Left)), Pressed = true});
+        InputMap.ActionAddEvent(InputAction_Left, keyEvent);
+        InputMap.ActionAddEvent("ui_left", keyEvent);
+
+        keyEvent = new InputEventKey() {Keycode = ((Key)(long)configFile.GetValue(ConfigSection_Keybindings, InputAction_Right)), Pressed = true};
         InputMap.AddAction(InputAction_Right);
-        InputMap.ActionAddEvent(InputAction_Right, new InputEventKey() {Keycode = ((Key)(long)configFile.GetValue(ConfigSection_Keybindings, InputAction_Right)), Pressed = true});
+        InputMap.ActionAddEvent(InputAction_Right, keyEvent);
+        InputMap.ActionAddEvent("ui_right", keyEvent);
+
         InputMap.AddAction(InputAction_Interact);
         InputMap.ActionAddEvent(InputAction_Interact, new InputEventKey() {Keycode = ((Key)(long)configFile.GetValue(ConfigSection_Keybindings, InputAction_Interact)), Pressed = true});
+
+        // Apply window scale, looks weird for a non pixel-perfect game.
+        int windowScale = (int)configFile.GetValue(ConfigSection_Misc, Misc_WindowScale);
+        DisplayServer.WindowSetSize(new Vector2I(864, 624) * windowScale);
+    }
+
+    public void ResetMisc()
+    {
+        configFile.SetValue(ConfigSection_Misc, Misc_SE, 0.6f);
+        configFile.SetValue(ConfigSection_Misc, Misc_BGM, 0.6f);
+        configFile.SetValue(ConfigSection_Misc, Misc_MenuOpacity, 0.5f);
+        configFile.SetValue(ConfigSection_Misc, Misc_WindowScale, 1);
+    }
+
+    public void ResetKeys()
+    {
+        foreach (var keybinding in defaultKeybindings)
+        {
+            RemapKey(keybinding.Key, keybinding.Value);
+        }
+    }
+
+    public void RemapKey(string inputAction, Key newKey)
+    {
+        if (!InputMap.HasAction(inputAction))
+        {
+            GD.PushError("Input action " + inputAction + " does not exist!");
+            return;
+        }
+
+        InputEventKey eventKey = new InputEventKey() {Keycode = newKey, Pressed = true};
+        InputMap.ActionEraseEvent(inputAction, InputMap.ActionGetEvents(inputAction)[0]);
+        InputMap.ActionAddEvent(inputAction, eventKey);
+
+        // Remap UI actions
+        if (inputAction == InputAction_Up)
+        {
+            GD.Print(InputMap.ActionGetEvents("ui_up"));
+            InputMap.ActionEraseEvent("ui_up", InputMap.ActionGetEvents("ui_up")[InputMap.ActionGetEvents("ui_up").Count - 1]);
+            InputMap.ActionAddEvent("ui_up", eventKey);
+        }
+        else if (inputAction == InputAction_Down)
+        {
+            InputMap.ActionEraseEvent("ui_down", InputMap.ActionGetEvents("ui_down")[InputMap.ActionGetEvents("ui_down").Count - 1]);
+            InputMap.ActionAddEvent("ui_down", eventKey);
+        }
+        else if (inputAction == InputAction_Left)
+        {
+            InputMap.ActionEraseEvent("ui_left", InputMap.ActionGetEvents("ui_left")[InputMap.ActionGetEvents("ui_left").Count - 1]);
+            InputMap.ActionAddEvent("ui_left", eventKey);
+        }
+        else if (inputAction == InputAction_Right)
+        {
+            InputMap.ActionEraseEvent("ui_right", InputMap.ActionGetEvents("ui_right")[InputMap.ActionGetEvents("ui_right").Count - 1]);
+            InputMap.ActionAddEvent("ui_right", eventKey);
+        }
+
+        configFile.SetValue(ConfigSection_Keybindings, inputAction, (long) newKey);
     }
 
     public void SaveConfig()

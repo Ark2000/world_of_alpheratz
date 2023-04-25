@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtw0cvjnbyewd"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_i60r5"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ut1fi"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ivk4p"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_jadip"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5n2s"]
+content_margin_top = 16.0
+bg_color = Color(1, 1, 1, 0.501961)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxyj1"]
+bg_color = Color(0.517647, 0.862745, 0.478431, 1)
+
+[node name="HSlider" type="HSlider"]
+offset_right = 190.0
+offset_bottom = 16.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_icons/grabber = SubResource("ImageTexture_i60r5")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_ut1fi")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_ivk4p")
+theme_override_icons/tick = SubResource("ImageTexture_jadip")
+theme_override_styles/slider = SubResource("StyleBoxFlat_r5n2s")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_vxyj1")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_vxyj1")
+value = 60.0

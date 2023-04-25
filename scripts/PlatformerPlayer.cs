@@ -50,10 +50,13 @@ public partial class PlatformerPlayer : CharacterBody2D
 
     [Export(PropertyHint.Range, "0.05, 1.0")]
     float BOUNCY_SPRITE = 0.15f;
+    
+    [Export]
+    public bool scriptedInput = false;
 
-    float x_input = 0.0f;
-    bool jump_pressed = false;
-    bool duck_pressed = false;
+    public float x_input = 0.0f;
+    public bool jump_pressed = false;
+    public bool duck_pressed = false;
     bool is_invincible = false;
     Vector2 velocity = Vector2.Zero;
 
@@ -284,9 +287,11 @@ public partial class PlatformerPlayer : CharacterBody2D
 
     public void UpdateInput()
     {
-        x_input = Input.GetActionStrength("right") - Input.GetActionStrength("left");
-        jump_pressed = Input.IsActionPressed("up");
-        duck_pressed = Input.IsActionPressed("down");
+        if (scriptedInput) return;
+
+        x_input = Input.GetActionStrength(GameWorld.InputAction_Right) - Input.GetActionStrength(GameWorld.InputAction_Left);
+        jump_pressed = Input.IsActionPressed(GameWorld.InputAction_Up);
+        duck_pressed = Input.IsActionPressed(GameWorld.InputAction_Down);
     }
 
     public override void _PhysicsProcess(double delta)

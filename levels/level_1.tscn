@@ -151,7 +151,7 @@ script = ExtResource("8_8gcaj")
 target = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_njbxm")]
-position = Vector2(1456, -336)
+position = Vector2(-480, -120)
 
 [node name="Coins" type="Node2D" parent="."]
 
