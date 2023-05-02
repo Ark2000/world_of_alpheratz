@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://blxpreny5uija"]
+
+[sub_resource type="GDScript" id="GDScript_u5psc"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	Console.register_env(\"lable\", $PanelContainer/Label)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="TextTest" type="Node2D"]
+script = SubResource("GDScript_u5psc")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+text = "fuck you, you piece of shit\"
+aaa"

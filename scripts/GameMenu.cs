@@ -60,7 +60,7 @@ public partial class GameMenu : Node
 			GetTree().Root.PropagateNotification((int)NotificationWMCloseRequest);
 			GetTree().Quit();
 		};
-		startButton.Pressed += () => GameWorld.Instance.ChangeScene("res://levels/level_1.tscn");
+		startButton.Pressed += () => GameWorld.Instance.ChangeScene("res://scenes/level_1_intro.tscn");
 		keyConfigButton.Pressed += () => ShowMenu(keyConfigMenu);
 		settingsButton.Pressed += () => ShowMenu(settingsMenu);
 		settingsBackButton.Pressed += () => Goback();
@@ -90,6 +90,7 @@ public partial class GameMenu : Node
 			GD.Print(button.Name);
 			int value = int.Parse(button.Name);
 			GameWorld.Instance.configFile.SetValue(GameWorld.ConfigSection_Misc, GameWorld.Misc_WindowScale, value);
+			GameWorld.Instance.ApplyResolution();
 		};
 		HideAll();
     }

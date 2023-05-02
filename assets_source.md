@@ -43,6 +43,11 @@
 ./images/LilWiz_Running_(32 x 32).png
 ./images/Magical_Orbs_Spell_(32 x 32).png
 ./images/Dust (16 x 16).png
+./images/Mochi_Hurt (32 x 32).png
+./images/Mochi_Jumping (32 x 32).png
+./images/Mochi_Idle (32 x 32).png
+./images/Mochi_Running (32 x 32).png
+./images/Twiggy_Idle (32 x 32).png
 ```
 
 ## License

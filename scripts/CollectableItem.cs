@@ -12,7 +12,6 @@ public partial class CollectableItem : Area2D
 
     public void Collected()
     {
-        GD.Print("[INFO] Coin collected!");
         GameWorld.Instance.EmitSignal(nameof(GameWorld.CoinCollected));
 
         collisionShape2D.QueueFree();

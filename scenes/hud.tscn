@@ -1,0 +1,177 @@
+[gd_scene load_steps=14 format=3 uid="uid://c3n15xfsang0g"]
+
+[ext_resource type="Script" path="res://scripts/HUD.cs" id="1_4ghwa"]
+[ext_resource type="Texture2D" uid="uid://belppt0beoqpo" path="res://images/Health_Indicator_Black_Outline (8 x 8).png" id="2_wk0au"]
+[ext_resource type="PackedScene" uid="uid://ddt1gb5nygs14" path="res://scenes/score_board.tscn" id="3_8wske"]
+[ext_resource type="Texture2D" uid="uid://by1i81o8nm12g" path="res://images/Timer_Coin_Numbers_Outlined (8 x 8).png" id="3_i7cfw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a11pd"]
+atlas = ExtResource("2_wk0au")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f04p3"]
+atlas = ExtResource("2_wk0au")
+region = Rect2(1, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p34y8"]
+atlas = ExtResource("3_i7cfw")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ahag"]
+resource_local_to_scene = true
+atlas = ExtResource("3_i7cfw")
+region = Rect2(48, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7mfo"]
+resource_local_to_scene = true
+atlas = ExtResource("3_i7cfw")
+region = Rect2(48, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvjm1"]
+resource_local_to_scene = true
+atlas = ExtResource("3_i7cfw")
+region = Rect2(48, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfid6"]
+resource_local_to_scene = true
+atlas = ExtResource("3_i7cfw")
+region = Rect2(48, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glls2"]
+resource_local_to_scene = true
+atlas = ExtResource("3_i7cfw")
+region = Rect2(48, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1425y"]
+resource_local_to_scene = true
+atlas = ExtResource("3_i7cfw")
+region = Rect2(48, 8, 8, 8)
+
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("heartProto", "heartContainer", "remainTime", "collectedCoins")]
+script = ExtResource("1_4ghwa")
+heartProto = NodePath("HeartEmpty")
+heartContainer = NodePath("HBoxContainer4/HBoxContainer")
+remainTime = NodePath("HBoxContainer4/ScoreBoardTime")
+collectedCoins = NodePath("HBoxContainer4/ScoreBoardCoins")
+
+[node name="HeartEmpty" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -828.0
+offset_bottom = -588.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_a11pd")
+
+[node name="Heart" type="TextureRect" parent="HeartEmpty"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_f04p3")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer4"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="HeartEmpty" type="TextureRect" parent="HBoxContainer4/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_a11pd")
+
+[node name="Heart" type="TextureRect" parent="HBoxContainer4/HBoxContainer/HeartEmpty"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_f04p3")
+
+[node name="HeartEmpty2" type="TextureRect" parent="HBoxContainer4/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_a11pd")
+
+[node name="Heart" type="TextureRect" parent="HBoxContainer4/HBoxContainer/HeartEmpty2"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_f04p3")
+
+[node name="HeartEmpty3" type="TextureRect" parent="HBoxContainer4/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_a11pd")
+
+[node name="Heart" type="TextureRect" parent="HBoxContainer4/HBoxContainer/HeartEmpty3"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_f04p3")
+
+[node name="ScoreBoardCoins" parent="HBoxContainer4" instance=ExtResource("3_8wske")]
+layout_mode = 2
+
+[node name="TextureRect" parent="HBoxContainer4/ScoreBoardCoins" index="0"]
+texture = SubResource("AtlasTexture_p34y8")
+
+[node name="TextureRect2" parent="HBoxContainer4/ScoreBoardCoins" index="1"]
+texture = SubResource("AtlasTexture_3ahag")
+
+[node name="TextureRect3" parent="HBoxContainer4/ScoreBoardCoins" index="2"]
+texture = SubResource("AtlasTexture_m7mfo")
+
+[node name="TextureRect4" parent="HBoxContainer4/ScoreBoardCoins" index="3"]
+texture = SubResource("AtlasTexture_uvjm1")
+
+[node name="ScoreBoardTime" parent="HBoxContainer4" instance=ExtResource("3_8wske")]
+layout_mode = 2
+
+[node name="TextureRect2" parent="HBoxContainer4/ScoreBoardTime" index="1"]
+texture = SubResource("AtlasTexture_sfid6")
+
+[node name="TextureRect3" parent="HBoxContainer4/ScoreBoardTime" index="2"]
+texture = SubResource("AtlasTexture_glls2")
+
+[node name="TextureRect4" parent="HBoxContainer4/ScoreBoardTime" index="3"]
+texture = SubResource("AtlasTexture_1425y")
+
+[editable path="HBoxContainer4/ScoreBoardCoins"]
+[editable path="HBoxContainer4/ScoreBoardTime"]

@@ -6,8 +6,6 @@ public partial class Killer : Area2D
 
 	[Signal]
 	public delegate void MobHurtEventHandler();
-	[Signal]
-	public delegate void PlayerHurtEventHandler();
 
 	public override void _Ready()
 	{
@@ -16,8 +14,6 @@ public partial class Killer : Area2D
 			{
 				PlatformerPlayer player = body as PlatformerPlayer;
 				player.Hurt();
-				EmitSignal(nameof(PlayerHurt));
-				GD.Print("[INFO] Ouch!");
 			}
 			if (body is Mob)
 			{

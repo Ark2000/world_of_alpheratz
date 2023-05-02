@@ -29,6 +29,8 @@ public partial class PlatformerPlayer : CharacterBody2D
     public GpuParticles2D leftWalkingDustParticles;
     [Export]
     public GpuParticles2D rightWalkingDustParticles;
+    [Export]
+    public ChatBubble chatBubble;
 
     [Export(PropertyHint.Range, "100.0, 500.0")]
     float ACCELERATION = 280.0f;
@@ -43,13 +45,13 @@ public partial class PlatformerPlayer : CharacterBody2D
     [Export(PropertyHint.Range, "0.1, 2.0, 0.1")]
     float GRAVITY_SCALE = 1.0f;
     [Export(PropertyHint.Range, "100.0, 200.0")]
-    float MAX_FALL_SPEED = 200.0f;
+    public float MAX_FALL_SPEED = 200.0f;
 
 	[Export(PropertyHint.Range, "0.1, 10.0")]
 	float INVINCIBLE_TIME = 2.0f;
 
     [Export(PropertyHint.Range, "0.05, 1.0")]
-    float BOUNCY_SPRITE = 0.15f;
+    float BOUNCY_SPRITE = 0.3f;
     
     [Export]
     public bool scriptedInput = false;
@@ -90,6 +92,12 @@ public partial class PlatformerPlayer : CharacterBody2D
                 spriteContainer.Scale = new Vector2(1.25f, 0.75f);
             }
         };
+
+        Node console = GetNode("/root/Console");
+        if (console != null)
+        {
+            console.Call("register_env", "player", this);
+        }
     }
 
 	public string GetStateString()
@@ -100,7 +108,7 @@ public partial class PlatformerPlayer : CharacterBody2D
 
     public void Hurt(float impactX = 100.0f, float impactY = 200.0f)
     {
-        if (is_invincible) return;
+        if (is_invincible)return;
         float dir = animatedSprite.FlipH ? 1.0f : -1.0f;
         Vector2 newVelocity = Velocity;
         newVelocity.X = dir * impactX;
@@ -141,6 +149,9 @@ public partial class PlatformerPlayer : CharacterBody2D
 		})).SetDelay(INVINCIBLE_TIME);
 
         emoBubble.PlayEmo(7);
+
+        GameWorld.Instance.EmitSignal(nameof(GameWorld.PlayerHurt));
+        GD.Print("[INFO] Ouch!");
     }
 
     public void UpdateState(float delta)

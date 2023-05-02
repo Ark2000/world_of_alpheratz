@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddt1gb5nygs14"]
+
+[ext_resource type="Script" path="res://scripts/ScoreBoard.cs" id="1_1aiu0"]
+[ext_resource type="Texture2D" uid="uid://by1i81o8nm12g" path="res://images/Timer_Coin_Numbers_Outlined (8 x 8).png" id="1_k3ng8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpolv"]
+atlas = ExtResource("1_k3ng8")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdbqm"]
+resource_local_to_scene = true
+atlas = ExtResource("1_k3ng8")
+region = Rect2(48, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbkan"]
+resource_local_to_scene = true
+atlas = ExtResource("1_k3ng8")
+region = Rect2(48, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uirkv"]
+resource_local_to_scene = true
+atlas = ExtResource("1_k3ng8")
+region = Rect2(48, 8, 8, 8)
+
+[node name="ScoreBoard" type="HBoxContainer" node_paths=PackedStringArray("number1", "number2", "number3")]
+size_flags_horizontal = 3
+script = ExtResource("1_1aiu0")
+number1 = NodePath("TextureRect2")
+number2 = NodePath("TextureRect3")
+number3 = NodePath("TextureRect4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_wpolv")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_sdbqm")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_sbkan")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_uirkv")

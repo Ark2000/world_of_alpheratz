@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmecgomwnskkx"]
+
+[ext_resource type="Texture2D" uid="uid://c0aiq7u8mgbul" path="res://images/level1.png" id="1_tb161"]
+[ext_resource type="FontFile" uid="uid://g0840nh810ty" path="res://font/at01.ttf" id="2_5p8r6"]
+
+[sub_resource type="GDScript" id="GDScript_d1r7o"]
+script/source = "extends Control
+
+
+func _ready() -> void:
+	pass
+	create_tween().tween_callback(
+		func():
+			# you should pass all parameters if it's a c# script.
+			GameWorld.ChangeScene(\"res://levels/level_1.tscn\", 0.4)
+	).set_delay(2.0)
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_hxh7m"]
+font = ExtResource("2_5p8r6")
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
+[node name="Level1Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_d1r7o")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Level1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -166.0
+offset_right = 200.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tb161")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = 93.0
+offset_right = 87.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "- LEVEL 1 -
+SURBURB
+"
+label_settings = SubResource("LabelSettings_hxh7m")
+horizontal_alignment = 1
+vertical_alignment = 1

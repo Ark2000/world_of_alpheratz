@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://clsgvwuv8doea"]
+
+[ext_resource type="FontFile" uid="uid://g0840nh810ty" path="res://font/at01.ttf" id="2_nqox7"]
+
+[sub_resource type="GDScript" id="GDScript_6chsv"]
+script/source = "extends Control
+
+
+func _ready() -> void:
+	create_tween().tween_callback(
+		func():
+			# easy mode
+			GameWorld.set_meta(\"max_hearts\", 8)
+			GameWorld.ChangeScene(\"res://levels/level_1.tscn\", 0.4)
+	).set_delay(2.0)
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_a3p7n"]
+font = ExtResource("2_nqox7")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="RestScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_6chsv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -41.0
+offset_right = 87.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Take a little rest..."
+label_settings = SubResource("LabelSettings_a3p7n")
+horizontal_alignment = 1
+vertical_alignment = 1

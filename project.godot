@@ -19,12 +19,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameWorld="*res://scenes/game_world.tscn"
+Console="*res://addons/panku_console/console.tscn"
 
 [display]
 
 window/size/viewport_width=864
 window/size/viewport_height=624
-window/size/always_on_top=true
 window/stretch/mode="viewport"
 
 [dotnet]
@@ -52,6 +52,11 @@ enabled=PackedStringArray("res://addons/panku_console/plugin.cfg")
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":51,"key_label":0,"unicode":51,"echo":false,"script":null)
 ]
 }
+toggle_console={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":96,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -59,6 +64,10 @@ enabled=PackedStringArray("res://addons/panku_console/plugin.cfg")
 2d_physics/layer_2="player"
 2d_physics/layer_3="mob"
 2d_physics/layer_4="mob_obstacle"
+
+[panku]
+
+toggle_console_action="toggle_console"
 
 [rendering]
 

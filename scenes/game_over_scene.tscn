@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6dgknvi7363w"]
+
+[ext_resource type="FontFile" uid="uid://g0840nh810ty" path="res://font/at01.ttf" id="1_ipnt0"]
+
+[sub_resource type="GDScript" id="GDScript_lttod"]
+script/source = "extends Control
+
+
+func _ready() -> void:
+	set_process_input(false)
+	create_tween().tween_callback(
+		func():
+			set_process_input(true)
+	).set_delay(3.0)
+
+func _input(e:InputEvent) -> void:
+	if e is InputEventKey:
+		GameWorld.ChangeScene(\"res://levels/level_1.tscn\", 0.4)
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_bivj8"]
+font = ExtResource("1_ipnt0")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="GameOverScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_lttod")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "continue?"
+label_settings = SubResource("LabelSettings_bivj8")
+horizontal_alignment = 1
+vertical_alignment = 1

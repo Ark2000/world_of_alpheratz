@@ -34,8 +34,6 @@ public partial class GameWorld : Node
     public delegate void PlayerHurtEventHandler();
 
     [Signal]
-    public delegate void PlayerDiedEventHandler();
-    [Signal]
     public delegate void SecreteAreaFoundEventHandler();
 
     [Export]
@@ -72,7 +70,7 @@ public partial class GameWorld : Node
         GD.Print("[INFO] Spawned cloud poof effect at " + globalPosition.ToString() + "");
     }
 
-    public void ChangeScene(string nextScenePath, float duration = 1.0f)
+    public void ChangeScene(string nextScenePath, float duration = 0.4f)
     {
         colorRect.Color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         Tween tween = CreateTween();
@@ -124,9 +122,14 @@ public partial class GameWorld : Node
         InputMap.AddAction(InputAction_Interact);
         InputMap.ActionAddEvent(InputAction_Interact, new InputEventKey() {Keycode = ((Key)(long)configFile.GetValue(ConfigSection_Keybindings, InputAction_Interact)), Pressed = true});
 
-        // Apply window scale, looks weird for a non pixel-perfect game.
+        // Looks weird for a non pixel-perfect game.
+        ApplyResolution();
+    }
+
+    public void ApplyResolution()
+    {
         int windowScale = (int)configFile.GetValue(ConfigSection_Misc, Misc_WindowScale);
-        DisplayServer.WindowSetSize(new Vector2I(864, 624) * windowScale);
+        DisplayServer.WindowSetSize(new Vector2I(432, 312) * windowScale);
     }
 
     public void ResetMisc()

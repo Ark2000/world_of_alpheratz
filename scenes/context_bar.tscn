@@ -31,6 +31,7 @@ region = Rect2(272, 128, 16, 16)
 [node name="ContextBar" type="CanvasLayer"]
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(0, 32)
 anchors_preset = 12
 anchor_top = 1.0

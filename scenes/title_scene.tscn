@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://btunb0s2pkqp6"]
+[gd_scene load_steps=20 format=3 uid="uid://btunb0s2pkqp6"]
 
 [ext_resource type="Texture2D" uid="uid://cky6ed4im046" path="res://images/Grassland_5 - Sky_color.png" id="1_8fguj"]
 [ext_resource type="Script" path="res://scripts/TitleScene.cs" id="1_31re5"]
@@ -72,6 +72,8 @@ _data = {
 "RESET": SubResource("Animation_i1e5k"),
 "title": SubResource("Animation_f4x8u")
 }
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_qq3jr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jydb5"]
 font = ExtResource("8_3ft3o")
@@ -202,6 +204,7 @@ zoom = Vector2(4, 4)
 
 [node name="GameMenu" parent="." instance=ExtResource("1_kv5vj")]
 layer = 0
+windowScaleButtons = SubResource("ButtonGroup_qq3jr")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 

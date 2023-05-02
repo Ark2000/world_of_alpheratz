@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0jkgjw7uy2i2"]
+[gd_scene load_steps=15 format=3 uid="uid://b0jkgjw7uy2i2"]
 
 [ext_resource type="Script" path="res://scripts/PlatformerPlayer.cs" id="1_cpe0l"]
 [ext_resource type="SpriteFrames" uid="uid://bfc8uumysdqg" path="res://resources/sprite_frames_player.tres" id="2_fba1q"]
 [ext_resource type="PackedScene" uid="uid://dcfopri73pp7h" path="res://scenes/emo_bubble.tscn" id="3_ko3q2"]
 [ext_resource type="Script" path="res://scripts/Killer.cs" id="4_4ppsc"]
 [ext_resource type="Texture2D" uid="uid://cnnxrj8xeh7xl" path="res://images/Dust (16 x 16).png" id="5_ufpxr"]
+[ext_resource type="PackedScene" uid="uid://boihckp5wsd6f" path="res://scenes/chat_bubble.tscn" id="6_8lg8a"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1bf2b"]
 particles_animation = true
@@ -60,7 +61,7 @@ size = Vector2(12, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0h5dk"]
 size = Vector2(12, 3)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "spriteContainer", "collisionShape2D", "emoBubble", "mobKiller", "leftWalkingDustParticles", "rightWalkingDustParticles")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "spriteContainer", "collisionShape2D", "emoBubble", "mobKiller", "leftWalkingDustParticles", "rightWalkingDustParticles", "chatBubble")]
 collision_layer = 2
 script = ExtResource("1_cpe0l")
 animatedSprite = NodePath("Node2D/AnimatedSprite2D")
@@ -70,6 +71,12 @@ emoBubble = NodePath("EmoBubble")
 mobKiller = NodePath("Killer")
 leftWalkingDustParticles = NodePath("LeftDustParticles2")
 rightWalkingDustParticles = NodePath("RightDustParticles")
+chatBubble = NodePath("ChatBubble")
+
+[node name="ChatBubble" parent="." instance=ExtResource("6_8lg8a")]
+offset_top = -46.0
+offset_right = 138.0
+offset_bottom = -29.0
 
 [node name="RightDustParticles" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_1bf2b")
@@ -98,7 +105,7 @@ shape = SubResource("RectangleShape2D_8dgac")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
 position = Vector2(0, -16)
 sprite_frames = ExtResource("2_fba1q")
-animation = &"ducking"
+animation = &"standing"
 
 [node name="Killer" type="Area2D" parent="."]
 collision_layer = 0

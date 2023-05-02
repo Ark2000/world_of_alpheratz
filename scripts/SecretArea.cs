@@ -8,7 +8,7 @@ public partial class SecretArea : SpecialArea
         Modulate = Modulate with { A = 1.0f };
         BodyEntered += (Node2D body) => {
             FadeOut();
-            GameWorld.Instance.EmitSignal(GameWorld.SignalName.SecreteAreaFound);
+            GameWorld.Instance.EmitSignal(nameof(GameWorld.SecreteAreaFound));
         };
         BodyExited += (Node2D body) => {
             FadeIn();
