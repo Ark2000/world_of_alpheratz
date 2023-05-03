@@ -5,19 +5,18 @@ using System.Collections.Generic;
 // Singleton
 public partial class GameWorld : Node
 {
-
-    public static string ConfigFilePath = "user://config.cfg";
-    public static string ConfigSection_Keybindings = "keybindings";
-    public static string InputAction_Up = "up";
-    public static string InputAction_Down = "down";
-    public static string InputAction_Left= "left";
-    public static string InputAction_Right = "right";
-    public static string InputAction_Interact = "interact";
-    public static string ConfigSection_Misc = "misc";
-    public static string Misc_SE = "se_volume";
-    public static string Misc_BGM = "bgm_volume";
-    public static string Misc_MenuOpacity = "menu_opacity";
-    public static string Misc_WindowScale = "window_scale";
+    public static string ConfigFilePath { get; set; } = "user://config.cfg";
+    public static string ConfigSection_Keybindings { get; set; } = "keybindings";
+    public static string InputAction_Up { get; set; } = "up";
+    public static string InputAction_Down { get; set; } = "down";
+    public static string InputAction_Left { get; set; } = "left";
+    public static string InputAction_Right { get; set; } = "right";
+    public static string InputAction_Interact { get; set; } = "interact";
+    public static string ConfigSection_Misc { get; set; } = "misc";
+    public static string Misc_SE { get; set; } = "se_volume";
+    public static string Misc_BGM { get; set; } = "bgm_volume";
+    public static string Misc_MenuOpacity { get; set; } = "menu_opacity";
+    public static string Misc_WindowScale { get; set; } = "window_scale";
 
     private static Dictionary<string, Key> defaultKeybindings = new Dictionary<string, Key>()
     {
