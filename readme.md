@@ -10,7 +10,7 @@ The project (art is not inclueded, they have seperate licenses, see `assets_sour
 
 ## Main Menu
 
-![](docs/main_menu.mp4)
+https://user-images.githubusercontent.com/21126555/235853936-a1190c23-832c-4a3c-9264-dd36d4eb243e.mp4
 
 ![](docs/main_menu.png)
 
