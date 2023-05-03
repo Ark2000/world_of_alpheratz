@@ -81,10 +81,9 @@ public partial class GameWorld : Node
         {
             newBGM = GD.Load<AudioStream>(bgmPath);
         }
-        
-        AudioStreamPlayer tmp = bgmPlayer1;
-        bgmPlayer1 = bgmPlayer2;
-        bgmPlayer2 = tmp;
+
+        // Use tuple to swap them
+        (bgmPlayer2, bgmPlayer1) = (bgmPlayer1, bgmPlayer2);
 
         bgmPlayer1.Stream = newBGM;
         bgmPlayer1.Play();
