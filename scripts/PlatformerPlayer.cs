@@ -192,14 +192,14 @@ public partial class PlatformerPlayer : CharacterBody2D
         velocity.Y = Mathf.Min(velocity.Y + _gravity * GRAVITY_SCALE * delta, MAX_FALL_SPEED);
 
         // Apply horizontal movement
-        if (currentState != PlayerState.Hurting && currentState != PlayerState.Ducking)
+        if (currentState is not PlayerState.Hurting and not PlayerState.Ducking)
         {
             velocity.X += (float)(x_input * ACCELERATION * delta);
             velocity.X = Mathf.Clamp(velocity.X, -MAX_SPEED, MAX_SPEED);
         }
 
 		// Apply air resistance
-        if (currentState == PlayerState.Jumping || currentState == PlayerState.Falling)
+        if (currentState is PlayerState.Jumping or PlayerState.Falling)
         {
             if (x_input == 0.0f)
             {
@@ -208,7 +208,7 @@ public partial class PlatformerPlayer : CharacterBody2D
         }
 
 		// Apply ground friction
-		if (currentState == PlayerState.Ducking || currentState == PlayerState.Standing)
+		if (currentState is PlayerState.Ducking or PlayerState.Standing)
 		{
 			velocity.X = Mathf.Lerp(velocity.X, 0.0f, (float)(FRICTION * delta));
 		}
@@ -265,7 +265,7 @@ public partial class PlatformerPlayer : CharacterBody2D
 				break;
         }
 
-        if (currentState == PlayerState.Standing || currentState == PlayerState.Walking)
+        if (currentState is PlayerState.Standing or PlayerState.Walking)
         {
             if (IsOnFloor())
             {
