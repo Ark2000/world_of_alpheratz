@@ -21,13 +21,9 @@ public partial class SecretArea : SpecialArea
             FadeIn();
         };
     }
-    public void FadeOut()
-    {
+    public void FadeOut() => 
         CreateTween().TweenProperty(this, "modulate:a", 0.2f, 0.5f);
-    }
 
-    public void FadeIn()
-    {
+    public void FadeIn() => 
         CreateTween().TweenProperty(this, "modulate:a", 1.0f, 0.5f);
-    }
 }

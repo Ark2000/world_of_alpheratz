@@ -128,10 +128,7 @@ public partial class PlatformerPlayer : CharacterBody2D
         footstepLoopTween.Stop();
     }
 
-	public string GetStateString()
-	{
-		return currentState.ToString();
-	}
+    public string GetStateString() => currentState.ToString();
 
 
     public void Hurt(float impactX = 100.0f, float impactY = 200.0f)

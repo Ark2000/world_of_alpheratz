@@ -238,10 +238,7 @@ public partial class GameWorld : Node
         configFile.SetValue(ConfigSection_Keybindings, inputAction, (long) newKey);
     }
 
-    public void SaveConfig()
-    {
-        configFile.Save(ConfigFilePath);
-    }
+    public void SaveConfig() => configFile.Save(ConfigFilePath);
 
     public override void _Notification(int what)
     {
