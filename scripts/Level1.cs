@@ -1,3 +1,5 @@
+namespace Alpheratz;
+
 public partial class Level1 : Node2D
 {
     [Export]

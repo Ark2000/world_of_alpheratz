@@ -1,3 +1,5 @@
+namespace Alpheratz;
+
 public partial class FirstScene : Control
 {
 	public override void _Ready()

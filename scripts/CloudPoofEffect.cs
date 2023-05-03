@@ -1,3 +1,5 @@
+namespace Alpheratz;
+
 public partial class CloudPoofEffect : AnimatedSprite2D
 {
 	public override void _Ready()

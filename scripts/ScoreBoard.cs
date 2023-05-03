@@ -1,3 +1,5 @@
+namespace Alpheratz;
+
 using Godot.Collections;
 
 public partial class ScoreBoard : HBoxContainer

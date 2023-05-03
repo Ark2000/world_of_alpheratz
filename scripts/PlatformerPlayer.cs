@@ -1,3 +1,5 @@
+namespace Alpheratz;
+
 public enum PlayerState
 {
     Standing,

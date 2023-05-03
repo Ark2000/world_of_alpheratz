@@ -1,3 +1,5 @@
+namespace Alpheratz;
+
 using System.Collections.Generic;
 
 // Singleton

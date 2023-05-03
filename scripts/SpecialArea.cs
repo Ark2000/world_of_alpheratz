@@ -1,3 +1,5 @@
+namespace Alpheratz;
+
 public partial class SpecialArea : Area2D
 {
     [Export]

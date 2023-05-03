@@ -1,3 +1,5 @@
+namespace Alpheratz;
+
 public partial class Trail : Line2D
 {
     [Export]

@@ -1,3 +1,5 @@
+namespace Alpheratz;
+
 public partial class CameraProxy : Node2D
 {
     [Export]

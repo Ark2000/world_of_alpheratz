@@ -1,3 +1,5 @@
+namespace Alpheratz;
+
 using System.Collections.Generic;
 
 public partial class GameMenu : CanvasLayer

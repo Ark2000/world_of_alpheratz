@@ -1,3 +1,5 @@
+namespace Alpheratz;
+
 public partial class Killer : Area2D
 {
 

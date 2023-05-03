@@ -1,3 +1,5 @@
+namespace Alpheratz;
+
 public partial class Mob : CharacterBody2D
 {
     public virtual void Perish()

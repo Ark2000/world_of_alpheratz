@@ -1,3 +1,5 @@
+namespace Alpheratz;
+
 public partial class ChatBubble : Label
 {
 	public bool isPlaying = false;

@@ -1,3 +1,5 @@
+namespace Alpheratz;
+
 public partial class EmoBubble : Sprite2D
 {
 	[Export]
