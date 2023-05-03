@@ -8,6 +8,12 @@ The project (art is not inclueded, they have seperate licenses, see `assets_sour
 
 # Preview
 
+Youtube: https://www.youtube.com/watch?v=mqI4jX5b-ug&t=19s
+
+or
+
+Bilibili: https://www.bilibili.com/video/BV1Js4y1X7hp/#reply995671997
+
 ## Main Menu
 
 https://user-images.githubusercontent.com/21126555/235853936-a1190c23-832c-4a3c-9264-dd36d4eb243e.mp4
