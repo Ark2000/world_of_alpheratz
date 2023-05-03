@@ -18,7 +18,7 @@ public partial class GameWorld : Node
     public static string Misc_MenuOpacity { get; set; } = "menu_opacity";
     public static string Misc_WindowScale { get; set; } = "window_scale";
 
-    private static readonly Dictionary<string, Key> defaultKeybindings = new Dictionary<string, Key>()
+    private static readonly Dictionary<string, Key> defaultKeybindings = new()
     {
         { InputAction_Up, Key.W },
         { InputAction_Down, Key.S },
@@ -40,7 +40,7 @@ public partial class GameWorld : Node
     public AudioStreamPlayer bgmPlayer1;
     public AudioStreamPlayer bgmPlayer2;
 
-    public ConfigFile configFile = new ConfigFile();
+    public ConfigFile configFile = new();
 
     public static GameWorld Instance { get; private set; }
 
@@ -49,7 +49,7 @@ public partial class GameWorld : Node
         Instance = this;
         LoadConfig();
 
-        InputEventKey keyEvent = new InputEventKey();
+        InputEventKey keyEvent = new();
         keyEvent.Keycode = Key.W;
         keyEvent.Pressed = true;
         InputMap.AddAction("test_action");
@@ -96,7 +96,7 @@ public partial class GameWorld : Node
 
     public void PlaySFX(string sfxPath, float pitch = 1.0f, float volumeScale = 1.0f)
     {
-        AudioStreamPlayer sfxPlayer = new AudioStreamPlayer();
+        AudioStreamPlayer sfxPlayer = new();
         AddChild(sfxPlayer);
         sfxPlayer.Stream = GD.Load<AudioStream>(sfxPath);
         sfxPlayer.PitchScale = pitch;
@@ -209,7 +209,7 @@ public partial class GameWorld : Node
             return;
         }
 
-        InputEventKey eventKey = new InputEventKey() {Keycode = newKey, Pressed = true};
+        InputEventKey eventKey = new() {Keycode = newKey, Pressed = true};
         InputMap.ActionEraseEvent(inputAction, InputMap.ActionGetEvents(inputAction)[0]);
         InputMap.ActionAddEvent(inputAction, eventKey);
 

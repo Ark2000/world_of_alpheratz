@@ -9,7 +9,7 @@ public partial class InfiniteRoad : Node2D
     public int chunkSize = 1008;
 	[Export]
 	public Node2D chunkProto;
-    private readonly Dictionary<int, Node> loadedChunks = new Dictionary<int, Node>();
+    private readonly Dictionary<int, Node> loadedChunks = new();
 
     public override void _Ready()
     {
@@ -59,7 +59,7 @@ public partial class InfiniteRoad : Node2D
         }
 
         // Unload unwanted chunks
-        List<int> ids = new List<int>(loadedChunks.Keys);
+        List<int> ids = new(loadedChunks.Keys);
         for (int i = 0; i < ids.Count; i++)
         {
             if (ids[i] < leftId || ids[i] > rightId)

@@ -11,7 +11,7 @@ public partial class ScoreBoard : HBoxContainer
 	[Export]
 	public TextureRect number3;
 
-	private static readonly Dictionary<int, Rect2> atlasRegions = new Dictionary<int, Rect2>()
+	private static readonly Dictionary<int, Rect2> atlasRegions = new()
 	{
 		{0, new Rect2(16, 0, 8, 8)},
 		{1, new Rect2(24, 0, 8, 8)},
