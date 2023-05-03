@@ -36,8 +36,9 @@ public partial class GameWorld : Node
     [Signal]
     public delegate void SecreteAreaFoundEventHandler();
 
-    [Export]
     public ColorRect colorRect;
+    public AudioStreamPlayer bgmPlayer1;
+    public AudioStreamPlayer bgmPlayer2;
 
     public ConfigFile configFile = new ConfigFile();
 
@@ -54,7 +55,55 @@ public partial class GameWorld : Node
         InputMap.AddAction("test_action");
         InputMap.ActionAddEvent("test_action", keyEvent);
 
+        colorRect = new ColorRect();
+        colorRect.SetAnchorsPreset(Control.LayoutPreset.FullRect);
+        colorRect.MouseFilter = Control.MouseFilterEnum.Ignore;
+        colorRect.Color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        AddChild(colorRect);
+
+        bgmPlayer1 = new AudioStreamPlayer();
+        bgmPlayer1.Bus = "BGM";
+        bgmPlayer2 = new AudioStreamPlayer();
+        bgmPlayer2.Bus = "BGM";
+        AddChild(bgmPlayer1);
+        AddChild(bgmPlayer2);
+
         GD.Print("[INFO] Game start!");
+    }
+
+    public void PlayBGM(string bgmPath, float fadeTime = 0.6f)
+    {
+        // Crossfade between two bgm players
+
+        AudioStream newBGM = null;
+
+        if (!string.IsNullOrEmpty(bgmPath))
+        {
+            newBGM = GD.Load<AudioStream>(bgmPath);
+        }
+        
+        AudioStreamPlayer tmp = bgmPlayer1;
+        bgmPlayer1 = bgmPlayer2;
+        bgmPlayer2 = tmp;
+
+        bgmPlayer1.Stream = newBGM;
+        bgmPlayer1.Play();
+
+        Tween tween = CreateTween().SetParallel();
+        tween.TweenMethod(Callable.From((float linearDb) => bgmPlayer1.VolumeDb = Mathf.LinearToDb(linearDb)), 0.0f, 1.0f, fadeTime);
+        tween.TweenMethod(Callable.From((float linearDb) => bgmPlayer2.VolumeDb = Mathf.LinearToDb(linearDb)), 1.0f, 0.0f, fadeTime);
+    }
+
+    public void PlaySFX(string sfxPath, float pitch = 1.0f, float volumeScale = 1.0f)
+    {
+        AudioStreamPlayer sfxPlayer = new AudioStreamPlayer();
+        AddChild(sfxPlayer);
+        sfxPlayer.Stream = GD.Load<AudioStream>(sfxPath);
+        sfxPlayer.PitchScale = pitch;
+        sfxPlayer.VolumeDb = Mathf.LinearToDb(volumeScale);
+        sfxPlayer.Bus = "SFX";
+        sfxPlayer.Play();
+        sfxPlayer.Finished += sfxPlayer.QueueFree;
     }
 
     public void SpawnCloudPoofEffect(Vector2 globalPosition, bool centered = true)
@@ -124,6 +173,10 @@ public partial class GameWorld : Node
 
         // Looks weird for a non pixel-perfect game.
         ApplyResolution();
+
+        // Apply sound settings
+        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("BGM"), Mathf.LinearToDb((float)configFile.GetValue(ConfigSection_Misc, Misc_BGM)));
+        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("SFX"), Mathf.LinearToDb((float)configFile.GetValue(ConfigSection_Misc, Misc_SE)));
     }
 
     public void ApplyResolution()

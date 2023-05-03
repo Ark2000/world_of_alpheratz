@@ -20,6 +20,7 @@ public partial class Killer : Area2D
 				Mob mob = body as Mob;
 				mob.Perish();
 				EmitSignal(nameof(MobHurt));
+				GameWorld.Instance.PlaySFX("res://sounds/sfx_movement_jump17_landing.wav");
 				GD.Print("[INFO] Mob Perished!");
 			}
 		};

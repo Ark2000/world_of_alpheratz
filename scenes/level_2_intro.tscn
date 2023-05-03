@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0seafc51x3mm"]
+
+[ext_resource type="Texture2D" uid="uid://by4xev4irloe7" path="res://images/level2.png" id="1_l6t47"]
+[ext_resource type="FontFile" uid="uid://g0840nh810ty" path="res://font/at01.ttf" id="2_wmw8l"]
+
+[sub_resource type="GDScript" id="GDScript_d1r7o"]
+script/source = "extends Control
+
+
+func _ready() -> void:
+	set_process_input(false)
+	create_tween().tween_callback(
+		func():
+			set_process_input(true)
+	).set_delay(2.0)
+	GameWorld.PlayBGM(\"res://sounds/bgm_Sunset Beach!_ Groovey Boardwalk Game Music.mp3\", 1.0)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		GameWorld.ChangeScene(\"res://scenes/first_scene.tscn\", 0.4)
+		set_process_input(false)
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_hxh7m"]
+font = ExtResource("2_wmw8l")
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
+[node name="Level2Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_d1r7o")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Level1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -166.0
+offset_right = 200.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l6t47")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.0
+offset_top = 81.0
+offset_right = 237.0
+offset_bottom = 245.0
+grow_horizontal = 2
+text = "- LEVEL 2 -
+SEASHORE (WIP)
+
+(press any key to return to menu)"
+label_settings = SubResource("LabelSettings_hxh7m")
+horizontal_alignment = 1
+vertical_alignment = 1

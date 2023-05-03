@@ -1,4 +1,4 @@
-# GrafxKid's publicly released pixel art assets
+# GrafxKid's pixel art assets
 
 ## Files
 
@@ -48,6 +48,7 @@
 ./images/Mochi_Idle (32 x 32).png
 ./images/Mochi_Running (32 x 32).png
 ./images/Twiggy_Idle (32 x 32).png
+./images/Twiggy_Running (32 x 32).png
 ```
 
 ## License
@@ -64,6 +65,9 @@ CC0 1.0 terms - https://creativecommons.org/publicdomain/zero/1.0/
 
 ```
 ./sounds/bgm_farm_town.mp3
+./sound/bgm_Continue__ by HeatleyBros - Calm Chill 8 Bit Game Music.mp3
+./sound/bgm_Grocery Store_ Calm Shop Game Music by HeatleyBros.mp3
+./sound/bgm_Sunset Beach!_ Groovey Boardwalk Game Music.mp3
 ```
 
 ## License
@@ -87,9 +91,28 @@ https://www.audiomicro.com/artist/heatleybros
 Creative Commons CC0
 ```
 
-# Others
+# Essential Retro Video Game Sound Effects Collection By Juhani Junkala
 
-``` Files
-./images/logo.png
-// generated using https://inkpx.com/templates/lv5/twitter-text-effect
+## Files
+
+```
+./sounds/sfx_sounds_pause4_out.wav
+./sounds/sfx_sounds_impact11.wav
+./sounds/sfx_sounds_impact8.wav
+./sounds/sfx_sounds_fanfare1.wav
+./sounds/sfx_sounds_pause4_in.wav
+./sounds/sfx_sounds_damage3.wav
+./sounds/sfx_movement_jump17_landing.wav
+./sounds/sfx_movement_jump9_landing.wav
+./sounds/sfx_movement_jump9.wav
+./sounds/sfx_movement_footsteps1b.wav
+./sounds/sfx_movement_footsteps1a.wav
+./sounds/sfx_coin_double4.wav
+./sounds/sfx_coin_cluster5.wav
+```
+
+## License
+
+```
+These sound effects have been released under CC0 creative commons license. You can do anything you want with these sounds.
 ```

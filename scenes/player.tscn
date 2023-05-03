@@ -74,6 +74,7 @@ rightWalkingDustParticles = NodePath("RightDustParticles")
 chatBubble = NodePath("ChatBubble")
 
 [node name="ChatBubble" parent="." instance=ExtResource("6_8lg8a")]
+anchors_preset = 0
 offset_top = -46.0
 offset_right = 138.0
 offset_bottom = -29.0

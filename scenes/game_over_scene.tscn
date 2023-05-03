@@ -7,7 +7,13 @@ script/source = "extends Control
 
 
 func _ready() -> void:
+	GameWorld.PlayBGM(null, 1.0)
+	
 	set_process_input(false)
+	create_tween().tween_callback(
+		func():
+			GameWorld.PlayBGM(\"res://sounds/bgm_Continue__ by HeatleyBros - Calm Chill 8 Bit Game Music.mp3\", 0.2)
+	).set_delay(1.0)
 	create_tween().tween_callback(
 		func():
 			set_process_input(true)

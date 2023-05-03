@@ -11,6 +11,10 @@ public partial class ChatBubble : Label
 	{
 		Hide();
 		originalPosition = Position;
+
+		// Editor may not work, so we set it here.
+		// bug report: https://github.com/godotengine/godot/issues/76668
+		GrowVertical = GrowDirection.Begin;
 	}
 
 	public void PlayText(string text)

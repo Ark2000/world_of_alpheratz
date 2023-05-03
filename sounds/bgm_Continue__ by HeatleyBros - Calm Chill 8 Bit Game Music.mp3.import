@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bma4spd2tn0vs"
+path="res://.godot/imported/bgm_Continue__ by HeatleyBros - Calm Chill 8 Bit Game Music.mp3-4bb5b514d5db63473140f2b983414d35.mp3str"
+
+[deps]
+
+source_file="res://sounds/bgm_Continue__ by HeatleyBros - Calm Chill 8 Bit Game Music.mp3"
+dest_files=["res://.godot/imported/bgm_Continue__ by HeatleyBros - Calm Chill 8 Bit Game Music.mp3-4bb5b514d5db63473140f2b983414d35.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

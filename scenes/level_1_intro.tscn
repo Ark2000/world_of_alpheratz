@@ -8,7 +8,7 @@ script/source = "extends Control
 
 
 func _ready() -> void:
-	pass
+	GameWorld.PlayBGM(\"\", 0)
 	create_tween().tween_callback(
 		func():
 			# you should pass all parameters if it's a c# script.

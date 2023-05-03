@@ -27,12 +27,6 @@ public partial class ScoreBoard : HBoxContainer
 
 	public override void _Ready()
 	{
-		Node console = GetNode("/root/Console");
-        if (console != null)
-        {
-            console.Call("register_env", $"score_{Name}", this);
-        }
-
 		number1.PivotOffset = number1.Size / 2.0f;
 		number2.PivotOffset = number2.Size / 2.0f;
 		number3.PivotOffset = number3.Size / 2.0f;

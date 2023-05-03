@@ -14,7 +14,7 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_it7ra"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
-shadow_color = Color(0, 0, 0.0941176, 0.627451)
+shadow_color = Color(0, 0.0117647, 0.101961, 0.184314)
 shadow_size = 4
 
 [sub_resource type="LabelSettings" id="LabelSettings_apn8j"]
@@ -29,7 +29,7 @@ shadow_color = Color(0, 0, 0, 0.12549)
 font = ExtResource("3_mpeam")
 font_size = 24
 
-[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("topMenu", "settingsMenu", "keyConfigMenu", "startButton", "settingsButton", "aboutButton", "quitButton", "settingsBackButton", "keyConfigButton", "keyConfigBackButton", "resetKeysButton", "seVolumeSlider", "bgmVolumeSlider", "menuOpacitySlider", "resetMiscButton")]
+[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("topMenu", "settingsMenu", "keyConfigMenu", "startButton", "settingsButton", "aboutButton", "quitButton", "settingsBackButton", "keyConfigButton", "keyConfigBackButton", "resetKeysButton", "seVolumeSlider", "bgmVolumeSlider", "menuOpacitySlider", "resetMiscButton", "background")]
 script = ExtResource("1_u36yv")
 topMenu = NodePath("TopMenu")
 settingsMenu = NodePath("Settings")
@@ -47,9 +47,17 @@ bgmVolumeSlider = NodePath("Settings/Panel/NinePatchRect/MarginContainer/VBoxCon
 menuOpacitySlider = NodePath("Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer3/HSlider3")
 windowScaleButtons = SubResource("ButtonGroup_8c4ww")
 resetMiscButton = NodePath("Settings/Panel/NinePatchRect/MarginContainer/VBoxContainer/Button")
+background = NodePath("BG")
+
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
 
 [node name="TopMenu" type="PanelContainer" parent="."]
-visible = false
 show_behind_parent = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -106,6 +114,7 @@ layout_mode = 2
 text = "Quit Game"
 
 [node name="Settings" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

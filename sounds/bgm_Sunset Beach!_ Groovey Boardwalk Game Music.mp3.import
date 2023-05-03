@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cngbsden08orc"
+path="res://.godot/imported/bgm_Sunset Beach!_ Groovey Boardwalk Game Music.mp3-12e0bac47bb80d4027c3322880b348b7.mp3str"
+
+[deps]
+
+source_file="res://sounds/bgm_Sunset Beach!_ Groovey Boardwalk Game Music.mp3"
+dest_files=["res://.godot/imported/bgm_Sunset Beach!_ Groovey Boardwalk Game Music.mp3-12e0bac47bb80d4027c3322880b348b7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

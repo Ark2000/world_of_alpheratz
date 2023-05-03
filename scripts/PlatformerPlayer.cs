@@ -52,6 +52,9 @@ public partial class PlatformerPlayer : CharacterBody2D
 
     [Export(PropertyHint.Range, "0.05, 1.0")]
     float BOUNCY_SPRITE = 0.3f;
+
+    [Export]
+    public bool sfx = false;
     
     [Export]
     public bool scriptedInput = false;
@@ -66,6 +69,8 @@ public partial class PlatformerPlayer : CharacterBody2D
     float _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
     private PlayerState currentState = PlayerState.Standing;
+
+    private Tween footstepLoopTween;
 
     public override void _Ready()
     {
@@ -86,18 +91,41 @@ public partial class PlatformerPlayer : CharacterBody2D
             if (newState == PlayerState.Jumping)
             {
                 spriteContainer.Scale = new Vector2(0.5f, 1.5f);
+                if (sfx) GameWorld.Instance.PlaySFX("res://sounds/sfx_movement_jump9.wav");
             }
             if (oldState == PlayerState.Falling)
             {
                 spriteContainer.Scale = new Vector2(1.25f, 0.75f);
+                if (sfx) GameWorld.Instance.PlaySFX("res://sounds/sfx_movement_jump9_landing.wav");
+            }
+            if (newState == PlayerState.Walking)
+            {
+                if (sfx) footstepLoopTween.Play();
+            }
+            if (oldState == PlayerState.Walking)
+            {
+                footstepLoopTween.Stop();
             }
         };
 
-        Node console = GetNode("/root/Console");
-        if (console != null)
+        createFootstepLoopTween();
+
+        if (HasNode("/root/Console"))
         {
-            console.Call("register_env", "player", this);
+            GetNode("/root/Console").Call("register_env", "player", this);
         }
+    }
+
+    private void createFootstepLoopTween()
+    {
+        footstepLoopTween = CreateTween().SetLoops();
+        footstepLoopTween.TweenCallback(Callable.From(() => {
+            GameWorld.Instance.PlaySFX("res://sounds/sfx_movement_footsteps1a.wav");
+        })).SetDelay(0.3f);
+        footstepLoopTween.TweenCallback(Callable.From(() => {
+            GameWorld.Instance.PlaySFX("res://sounds/sfx_movement_footsteps1b.wav");
+        })).SetDelay(0.3f);
+        footstepLoopTween.Stop();
     }
 
 	public string GetStateString()
@@ -149,6 +177,8 @@ public partial class PlatformerPlayer : CharacterBody2D
 		})).SetDelay(INVINCIBLE_TIME);
 
         emoBubble.PlayEmo(7);
+
+        GameWorld.Instance.PlaySFX("res://sounds/sfx_sounds_impact8.wav");
 
         GameWorld.Instance.EmitSignal(nameof(GameWorld.PlayerHurt));
         GD.Print("[INFO] Ouch!");

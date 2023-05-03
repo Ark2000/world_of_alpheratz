@@ -2,13 +2,20 @@ using Godot;
 
 public partial class SecretArea : SpecialArea
 {
+
+    private bool isFound = false;
+
     public override void _Ready()
     {
         base._Ready();
         Modulate = Modulate with { A = 1.0f };
         BodyEntered += (Node2D body) => {
             FadeOut();
-            GameWorld.Instance.EmitSignal(nameof(GameWorld.SecreteAreaFound));
+            if (!isFound)
+            {
+                isFound = true;
+                GameWorld.Instance.EmitSignal(nameof(GameWorld.SecreteAreaFound));
+            }
         };
         BodyExited += (Node2D body) => {
             FadeIn();

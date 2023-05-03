@@ -18,6 +18,7 @@ public partial class TitleScene : Control
 			{
 				menu.ShowMenu(menu.topMenu);
 				CreateTween().TweenProperty(logo, "modulate:a", 1.0f, 0.5f);
+				GameWorld.Instance.PlayBGM("res://sounds/bgm_Grocery Store_ Calm Shop Game Music by HeatleyBros.mp3");
 			}
 		};
 		logo.Modulate = logo.Modulate with {A = 0};

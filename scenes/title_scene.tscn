@@ -73,7 +73,7 @@ _data = {
 "title": SubResource("Animation_f4x8u")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_qq3jr"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_mvpef"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jydb5"]
 font = ExtResource("8_3ft3o")
@@ -193,7 +193,7 @@ stretch_mode = 5
 [node name="InfiniteRoad" parent="." instance=ExtResource("10_13u80")]
 
 [node name="Player" parent="." instance=ExtResource("9_635g1")]
-position = Vector2(209, 518)
+position = Vector2(217, 254)
 ACCELERATION = 150.0
 MAX_SPEED = 42.0
 scriptedInput = true
@@ -204,7 +204,7 @@ zoom = Vector2(4, 4)
 
 [node name="GameMenu" parent="." instance=ExtResource("1_kv5vj")]
 layer = 0
-windowScaleButtons = SubResource("ButtonGroup_qq3jr")
+windowScaleButtons = SubResource("ButtonGroup_mvpef")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
@@ -218,5 +218,5 @@ offset_left = -102.0
 offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "v0.1.0.20230425"
+text = "v0.1.0.20230502"
 label_settings = SubResource("LabelSettings_jydb5")

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/RandomizedAnimatedSprite2D.cs" id="3_mpmmi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ci2w5"]
-size = Vector2(20, 26)
+size = Vector2(20, 22)
 
 [node name="ColletableCoin" type="Area2D" node_paths=PackedStringArray("collisionShape2D")]
 collision_layer = 0
@@ -14,7 +14,6 @@ script = ExtResource("1_mprje")
 collisionShape2D = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_ci2w5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

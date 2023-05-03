@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 
-public partial class GameMenu : Node
+public partial class GameMenu : CanvasLayer
 {
 	[Export]
 	public Control topMenu;
@@ -35,6 +35,11 @@ public partial class GameMenu : Node
 	ButtonGroup windowScaleButtons;
 	[Export]
 	Button resetMiscButton;
+	[Export]
+	ColorRect background;
+
+	[Export]
+	bool pauseMenuMode = false;
 
 	private Stack<Control> menuStack = new Stack<Control>();
 	private Control currentMenu;
@@ -67,6 +72,10 @@ public partial class GameMenu : Node
 		keyConfigBackButton.Pressed += () => Goback();
 		startButton.FocusNeighborTop = quitButton.GetPath();
 		quitButton.FocusNeighborBottom = startButton.GetPath();
+		aboutButton.Pressed += () => {
+			OS.ShellOpen("https://github.com/Ark2000/world_of_alpheratz");
+		};
+		
 		resetKeysButton.Pressed += () => {
 			GameWorld.Instance.ResetKeys();
 			// I don't like group calls. They are not type safe.
@@ -78,13 +87,16 @@ public partial class GameMenu : Node
 		};
 		seVolumeSlider.ValueChanged += (double value) => {
 			GameWorld.Instance.configFile.SetValue(GameWorld.ConfigSection_Misc, GameWorld.Misc_SE, value);
+        	AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("SFX"), Mathf.LinearToDb((float)value));
 		};
 		bgmVolumeSlider.ValueChanged += (double value) => {
 			GameWorld.Instance.configFile.SetValue(GameWorld.ConfigSection_Misc, GameWorld.Misc_BGM, value);
+			AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("BGM"), Mathf.LinearToDb((float)value));
 		};
 		menuOpacitySlider.ValueChanged += (double value) => {
 			GD.Print("opa: ", value);
 			GameWorld.Instance.configFile.SetValue(GameWorld.ConfigSection_Misc, GameWorld.Misc_MenuOpacity, value);
+			ChangeMenuPanelOpacity((float) value);
 		};
 		windowScaleButtons.Pressed += (BaseButton button) => {
 			GD.Print(button.Name);
@@ -93,6 +105,14 @@ public partial class GameMenu : Node
 			GameWorld.Instance.ApplyResolution();
 		};
 		HideAll();
+
+		if (pauseMenuMode)
+		{
+			ProcessMode =ProcessModeEnum.Always;
+			Hide();
+			ShowMenu(topMenu);
+		}
+		background.Visible = pauseMenuMode;
     }
 
 	public void HideAll()
@@ -121,20 +141,41 @@ public partial class GameMenu : Node
 		if (!goBack) menuStack.Push(menu);
 	}
 
-	public void Goback()
+	public void ChangeMenuPanelOpacity(float value)
 	{
+		StyleBoxFlat styleBox = (StyleBoxFlat)topMenu.Get("theme_override_styles/panel");
+		styleBox.ShadowColor = styleBox.ShadowColor with {A = value };
+	}
+
+	public bool Goback()
+	{
+		bool isLast = false;
 		if (menuStack.Count > 1)
 		{
 			menuStack.Pop();
 			ShowMenu(menuStack.Peek(), true);
+			isLast = true;
 		}
+		return isLast;
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		if (Input.IsActionJustPressed("ui_cancel"))
 		{
-			Goback();
+			if (!Goback() && pauseMenuMode)
+			{
+				GetTree().Paused = !GetTree().Paused;
+				Visible = GetTree().Paused;
+				if (GetTree().Paused)
+				{
+					GameWorld.Instance.PlaySFX("res://sounds/sfx_sounds_pause4_in.wav");
+				}
+				else
+				{
+					GameWorld.Instance.PlaySFX("res://sounds/sfx_sounds_pause4_out.wav");
+				}
+			}
 		}
 	}
 
@@ -143,6 +184,7 @@ public partial class GameMenu : Node
 		seVolumeSlider.Value = (double) GameWorld.Instance.configFile.GetValue(GameWorld.ConfigSection_Misc, GameWorld.Misc_SE);
 		bgmVolumeSlider.Value = (double) GameWorld.Instance.configFile.GetValue(GameWorld.ConfigSection_Misc, GameWorld.Misc_BGM);
 		menuOpacitySlider.Value = (double) GameWorld.Instance.configFile.GetValue(GameWorld.ConfigSection_Misc, GameWorld.Misc_MenuOpacity);
+		ChangeMenuPanelOpacity((float)menuOpacitySlider.Value);
 		int windowScale = (int) GameWorld.Instance.configFile.GetValue(GameWorld.ConfigSection_Misc, GameWorld.Misc_WindowScale);
 		windowScaleButtons.GetButtons()[windowScale - 1].ButtonPressed = true;
 	}

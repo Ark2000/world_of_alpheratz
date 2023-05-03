@@ -1,0 +1,126 @@
+"filename", "language", "XML", "GDResource", "GDScript", "C#", "Markdown", "comment", "blank", "total"
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\assets_source.md", "Markdown", 0, 0, 0, 0, 79, 0, 17, 96
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\font\at01.ttf.import", "GDResource", 0, 28, 0, 0, 0, 0, 6, 34
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\icon.svg", "XML", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\icon.svg.import", "GDResource", 0, 32, 0, 0, 0, 0, 6, 38
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Blocks (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Bub_Hurt (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Bub_Idle (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Bub_Running (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Bub_Squished (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Cloud_Poof (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Coin (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Devo_Falling (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Devo_Hurt (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Devo_Jumping (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Devo_Running (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Devo_Standing (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Dust (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Flowers (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Grassland_1 - Foreground_scenery.png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Grassland_2 - Hills.png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Grassland_3 - Cloud_cover_1.png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Grassland_4 - Cloud_cover_2.png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Grassland_5 - Sky_color.png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Grassland_Extra_plants (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Grassland_Terrain (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Grassland_entities (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Health_Indicator_Black_Outline (8 x 8).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\House (112 x 96).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\LilWiz_Casting_Spell_(32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\LilWiz_Casting_Spell_Aerial_(32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\LilWiz_Casting_Spell_Repeating_(32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\LilWiz_Ducking_(32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\LilWiz_Falling_(32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\LilWiz_Ground_Recovery_(32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\LilWiz_Hurt_(32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\LilWiz_Idle_(32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\LilWiz_Jumping_(32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\LilWiz_Running_(32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Magical_Orbs_Spell_(32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Mochi_Hurt (32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Mochi_Idle (32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Mochi_Jumping (32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Mochi_Running (32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Mouse_Icons_Outlined_Drop-shadowed (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Snack_machine_Bench_Trash_bin (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Speech_Emotes (16 x 16).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Timer_Coin_Numbers_Outlined (8 x 8).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Twiggy_Idle (32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Twiggy_Running (32 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\Water_frames (16 x 32).png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\border.png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\chatbubble.png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\chatbubble_tail.png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\checkbox_checked.png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\checkbox_unchecked.png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\kenny_input_prompts_16.png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\level1.png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\link.png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\images\logo.png.import", "GDResource", 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\levels\level_1.tscn", "GDResource", 0, 826, 0, 0, 0, 0, 215, 1041
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\project.godot", "GDResource", 0, 49, 0, 0, 0, 7, 20, 76
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\readme.md", "Markdown", 0, 0, 0, 0, 3, 0, 1, 4
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\resources\sprite_frames_bub.tres", "GDResource", 0, 54, 0, 0, 0, 0, 9, 63
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\resources\sprite_frames_cloud_poof.tres", "GDResource", 0, 57, 0, 0, 0, 0, 11, 68
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\resources\sprite_frames_coin.tres", "GDResource", 0, 33, 0, 0, 0, 0, 7, 40
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\resources\sprite_frames_mob_devo.tres", "GDResource", 0, 30, 0, 0, 0, 0, 3, 33
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\resources\sprite_frames_player.tres", "GDResource", 0, 118, 0, 0, 0, 0, 15, 133
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\resources\tileset_level_1.tres", "GDResource", 0, 964, 0, 0, 0, 0, 11, 975
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\resources\tileset_level_1_fake.tres", "GDResource", 0, 45, 0, 0, 0, 0, 4, 49
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\chat_bubble.tscn", "GDResource", 0, 54, 0, 0, 0, 0, 6, 60
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\cliff.tscn", "GDResource", 0, 10, 0, 0, 0, 0, 5, 15
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\cloud_poof_effect.tscn", "GDResource", 0, 8, 0, 0, 0, 0, 3, 11
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\colletable_coin.tscn", "GDResource", 0, 19, 0, 0, 0, 0, 6, 25
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\context_bar.tscn", "GDResource", 0, 74, 0, 0, 0, 0, 19, 93
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\emo_bubble.tscn", "GDResource", 0, 71, 0, 0, 0, 0, 7, 78
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\first_scene.tscn", "GDResource", 0, 33, 0, 0, 0, 0, 6, 39
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\game_menu.tscn", "GDResource", 0, 364, 0, 0, 0, 0, 61, 425
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\game_over_scene.tscn", "GDResource", 0, 44, 0, 0, 0, 0, 10, 54
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\game_world.tscn", "GDResource", 0, 14, 0, 0, 0, 0, 4, 18
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\hud.tscn", "GDResource", 0, 146, 0, 0, 0, 0, 32, 178
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\infinite_road.tscn", "GDResource", 0, 19, 0, 0, 0, 0, 4, 23
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\level_1_intro.tscn", "GDResource", 0, 65, 0, 0, 0, 0, 10, 75
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\main_menu_button.tscn", "GDResource", 0, 27, 0, 0, 0, 0, 9, 36
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\menu_slider.tscn", "GDResource", 0, 24, 0, 0, 0, 0, 8, 32
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\mob_bub.tscn", "GDResource", 0, 33, 0, 0, 0, 0, 10, 43
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\mob_devo.tscn", "GDResource", 0, 30, 0, 0, 0, 0, 9, 39
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\player.tscn", "GDResource", 0, 99, 0, 0, 0, 0, 20, 119
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\rest_scene.tscn", "GDResource", 0, 48, 0, 0, 0, 0, 9, 57
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\score_board.tscn", "GDResource", 0, 44, 0, 0, 0, 0, 11, 55
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scenes\title_scene.tscn", "GDResource", 0, 194, 0, 0, 0, 0, 29, 223
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\CameraProxy.cs", "C#", 0, 0, 0, 21, 0, 0, 6, 27
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\ChatBubble.cs", "C#", 0, 0, 0, 47, 0, 1, 6, 54
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\Cliff.cs", "C#", 0, 0, 0, 14, 0, 2, 3, 19
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\CloudPoofEffect.cs", "C#", 0, 0, 0, 11, 0, 0, 2, 13
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\CollectableItem.cs", "C#", 0, 0, 0, 21, 0, 0, 5, 26
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\EmoBubble.cs", "C#", 0, 0, 0, 12, 0, 0, 3, 15
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\FirstScene.cs", "C#", 0, 0, 0, 10, 0, 0, 3, 13
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\GameMenu.cs", "C#", 0, 0, 0, 134, 0, 2, 14, 150
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\GameWorld.cs", "C#", 0, 0, 0, 162, 0, 6, 35, 203
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\HUD.cs", "C#", 0, 0, 0, 48, 0, 0, 7, 55
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\InfiniteRoad.cs", "C#", 0, 0, 0, 59, 0, 3, 10, 72
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\InteractiveMessage.cs", "C#", 0, 0, 0, 58, 0, 0, 11, 69
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\Killer.cs", "C#", 0, 0, 0, 24, 0, 0, 4, 28
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\Level1.cs", "C#", 0, 0, 0, 155, 0, 9, 23, 187
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\Mob.cs", "C#", 0, 0, 0, 8, 0, 0, 2, 10
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\MobBub.cs", "C#", 0, 0, 0, 57, 0, 0, 16, 73
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\MobDevo.cs", "C#", 0, 0, 0, 64, 0, 1, 16, 81
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\PlatformerPlayer.cs", "C#", 0, 0, 0, 261, 0, 15, 49, 325
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\RandomizedAnimatedSprite2D.cs", "C#", 0, 0, 0, 9, 0, 1, 2, 12
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\RemapButton.cs", "C#", 0, 0, 0, 38, 0, 2, 7, 47
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\ScoreBoard.cs", "C#", 0, 0, 0, 74, 0, 0, 11, 85
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\SecretArea.cs", "C#", 0, 0, 0, 24, 0, 0, 3, 27
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\SpecialArea.cs", "C#", 0, 0, 0, 17, 0, 0, 2, 19
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\TitleScene.cs", "C#", 0, 0, 0, 29, 0, 0, 7, 36
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\scripts\Trail.cs", "C#", 0, 0, 0, 20, 0, 3, 7, 30
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\sounds\bgm_farm_town.mp3.import", "GDResource", 0, 14, 0, 0, 0, 0, 6, 20
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\tests\control.tscn", "GDResource", 0, 34, 0, 0, 0, 0, 10, 44
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\tests\empty.tscn", "GDResource", 0, 24, 0, 0, 0, 0, 7, 31
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\tests\f2.gd", "GDScript", 0, 0, 25, 0, 0, 0, 9, 34
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\tests\free_cam.gd", "GDScript", 0, 0, 30, 0, 0, 4, 7, 41
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\tests\new_script.gd", "GDScript", 0, 0, 11, 0, 0, 0, 2, 13
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\tests\text_test.tscn", "GDResource", 0, 19, 0, 0, 0, 0, 9, 28
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\tests\viewport_test.tscn", "GDResource", 0, 23, 0, 0, 0, 0, 6, 29
+"c:\Users\k2kra\Documents\Projects\Godot\4.x\IAmSerious\world_of_alpheratz\world_of_alpheratz.csproj", "XML", 6, 0, 0, 0, 0, 0, 0, 6
+"Total", "-", 7, 5365, 66, 1377, 82, 56, 1244, 8197

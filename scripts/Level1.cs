@@ -16,22 +16,23 @@ public partial class Level1 : Node2D
     [Export]
     Area2D npc2_Dialogue;
     [Export]
+    PlatformerPlayer npc3;
+    [Export]
+    Area2D npc3_Dialogue;
+    [Export]
+    Area2D nextLevelPortal;
+    [Export]
     HUD hud;
+    [Export]
+    CanvasLayer pauseMenu;
 
     public int maxHearts = 3;
     public int currentHearts = 3;
+
+    public int secreteAreaFoundCounter = 0;
     
     public int coins = 0;
     public int timeRemain = 289;
-
-    public override void _PhysicsProcess(double delta)
-    {
-        // GD.Print(delta);
-        if (Input.IsActionJustPressed("1"))
-        {
-            player.chatBubble.PlayText("Oh, what a nice day.\nI'm so happy.");
-        }
-    }
 
     public override void _Ready()
     {
@@ -40,6 +41,8 @@ public partial class Level1 : Node2D
             maxHearts = (int)GameWorld.Instance.GetMeta("max_hearts");
             currentHearts = maxHearts;
         }
+
+        GameWorld.Instance.PlayBGM("res://sounds/bgm_farm_town.mp3");
 
         GameWorld.Instance.Connect(
             nameof(GameWorld.SignalName.CoinCollected),
@@ -59,8 +62,15 @@ public partial class Level1 : Node2D
             Callable.From(OnPlayerHurt)
         );
 
+        bool leftAreaFirstTime = false;
+
         leftArea.BodyEntered += (Node2D body) => {
             cam.LimitLeft -= 1000;
+            if (!leftAreaFirstTime)
+            {
+                leftAreaFirstTime = true;
+                player.chatBubble.PlayText("Did I forget something\nat home?");
+            }
         };
 
         leftArea.BodyExited += (Node2D body) => {
@@ -72,6 +82,7 @@ public partial class Level1 : Node2D
         InteractiveMessage.MessageActivatedEventHandler onRest = null;
         onRest = () => {
             GD.Print("[INFO] REST");
+            GameWorld.Instance.PlayBGM("", 0);
             GameWorld.Instance.ChangeScene("res://scenes/rest_scene.tscn");
             rest.MessageActivated -= onRest;
         };
@@ -93,8 +104,16 @@ public partial class Level1 : Node2D
             }
         })).SetDelay(1.0f);
 
+        nextLevelPortal.BodyEntered += (Node2D body) => {
+            GameWorld.Instance.ChangeScene("res://scenes/level_2_intro.tscn");
+        };
+
+        CreateTween().TweenCallback(Callable.From(() => {
+            player.chatBubble.PlayText("I have to hurry up!\nTwiggy is waiting for me.");
+        })).SetDelay(2.0f);
 
         SetupNPC2();
+        SetupNPC3();
     }
 
     private void OnPlayerHurt()
@@ -103,6 +122,7 @@ public partial class Level1 : Node2D
         hud.SetHearts(currentHearts, maxHearts);
         if (currentHearts <= 0)
         {
+            GameWorld.Instance.PlaySFX("res://sounds/sfx_sounds_damage3.wav");
             player.collisionShape2D.SetDeferred("disabled", true);
             CreateTween().TweenCallback(Callable.From(()=>{
                 GameWorld.Instance.ChangeScene("res://scenes/game_over_scene.tscn");
@@ -110,6 +130,7 @@ public partial class Level1 : Node2D
         }
     }
 
+    // It's awesome that you can write the entire npc logic in one function in c#.
     private void SetupNPC2()
     {
         int npc2Moves = 0;
@@ -134,15 +155,17 @@ public partial class Level1 : Node2D
                 npc2.chatBubble.PlayText("Wish you good luck! ^ ^");
             })).SetDelay(2.8f);
             tween.TweenCallback(Callable.From(() => {
+                player.chatBubble.PlayText("Thank you, Mr. Mochi.\nHave a nice day!");
+            })).SetDelay(2.0f);
+            tween.TweenCallback(Callable.From(() => {
                 npc2State = "idle";
             })).SetDelay(2.0f);
-            // One-shot event handler
+            // destroy the observer so it becomes a one-shot event handler
             npc2_Dialogue.QueueFree();
             npc2_Dialogue = null;
         };
 
         CreateTween().SetLoops().TweenCallback(Callable.From(() => {
-            GD.Print(npc2State);
             if (npc2State == "idle")
             {
                 float rd = GD.Randf();
@@ -172,15 +195,65 @@ public partial class Level1 : Node2D
         })).SetDelay(0.5f);
     }
 
+    private void SetupNPC3()
+    {
+        string npc3State = "";
+        npc3_Dialogue.BodyEntered += (Node2D body) => {
+            npc3_Dialogue.QueueFree();
+            npc3_Dialogue = null;
+            Tween tween = CreateTween();
+            tween.TweenCallback(Callable.From(() => {
+                npc3.chatBubble.PlayText("Hi, Leia! ^_^");
+            })).SetDelay(0.5f);
+            tween.TweenCallback(Callable.From(() => {
+                npc3.chatBubble.PlayText("I've been waiting here for so long.");
+            })).SetDelay(2.0f);
+            tween.TweenCallback(Callable.From(() => {
+                npc3.chatBubble.PlayText("Finally you're here! Let's go!");
+            })).SetDelay(2.0f);
+            if (secreteAreaFoundCounter == 6)
+            {
+                tween.TweenCallback(Callable.From(() => {
+                    npc3.chatBubble.PlayText("Wow, you found all the secret areas!");
+                })).SetDelay(2.0f);
+                tween.TweenCallback(Callable.From(() => {
+                    npc3.emoBubble.PlayEmo(2);
+                })).SetDelay(2.0f);
+                tween.TweenCallback(Callable.From(() => {
+                    npc3.chatBubble.PlayText("I'm so proud of you! ^_^");
+                })).SetDelay(2.0f);
+                tween.TweenCallback(Callable.From(() => {
+                    player.chatBubble.PlayText("Well, I'm just lucky.");
+                })).SetDelay(2.0f);
+            }
+            tween.TweenCallback(Callable.From(() => {
+                // walk right
+                npc3State = "walking";
+                npc3.x_input = 1;
+                npc3.emoBubble.PlayEmo(3);
+            })).SetDelay(1.0f);
+        };
+        CreateTween().SetLoops().TweenCallback(Callable.From(() => {
+            if (npc3State != "walking")
+            {
+                npc3.x_input = 0;
+                bool flip = (player.Position.X - npc3.Position.X) > 0 ? false : true;
+                npc3.animatedSprite.FlipH = flip;
+            }
+        })).SetDelay(0.5f);
+    }
+
     private void OnCoinCollected()
     {
-        GD.Print(hud);
         coins += 1;
         hud.collectedCoins.SetNumber(coins);
     }
 
     private void onSecreteAreaFound()
     {
+        GD.Print("Secret area found!");
+        GameWorld.Instance.PlaySFX("res://sounds/sfx_sounds_fanfare1.wav");
         player.emoBubble.PlayEmo(2);
+        secreteAreaFoundCounter += 1;
     }
 }
