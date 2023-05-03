@@ -28,8 +28,16 @@ https://user-images.githubusercontent.com/21126555/235853936-a1190c23-832c-4a3c-
 
 ![](docs/adventure2.png)
 
-![](docs/npc_chat.mp4)
+https://user-images.githubusercontent.com/21126555/235854053-f6de023a-ebc0-4e73-a78e-dc39fab672d6.mp4
 
-![](docs/mobs.mp4)
 
-![](docs/secret_areas.mp4)
+
+https://user-images.githubusercontent.com/21126555/235854087-a8e421f9-46c2-4397-adb9-0e1acab71e0a.mp4
+
+
+
+https://user-images.githubusercontent.com/21126555/235854115-d342f8c7-e78c-444e-b3dd-d393f9adb74b.mp4
+
+
+
+
