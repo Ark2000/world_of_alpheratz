@@ -187,7 +187,7 @@ public partial class Level1 : Node2D
             {
                 // Flip to face player
                 npc2.x_input = 0;
-                bool flip = (player.Position.X - npc2.Position.X) > 0 ? false : true;
+                bool flip = (player.Position.X - npc2.Position.X) <= 0;
                 npc2.animatedSprite.FlipH = flip;
             }
 
@@ -236,7 +236,7 @@ public partial class Level1 : Node2D
             if (npc3State != "walking")
             {
                 npc3.x_input = 0;
-                bool flip = (player.Position.X - npc3.Position.X) > 0 ? false : true;
+                bool flip = (player.Position.X - npc3.Position.X) <= 0;
                 npc3.animatedSprite.FlipH = flip;
             }
         })).SetDelay(0.5f);
