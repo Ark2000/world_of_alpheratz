@@ -49,9 +49,11 @@ public partial class GameWorld : Node
         Instance = this;
         LoadConfig();
 
-        InputEventKey keyEvent = new();
-        keyEvent.Keycode = Key.W;
-        keyEvent.Pressed = true;
+        InputEventKey keyEvent = new()
+        {
+            Keycode = Key.W,
+            Pressed = true
+        };
         InputMap.AddAction("test_action");
         InputMap.ActionAddEvent("test_action", keyEvent);
 
@@ -61,10 +63,8 @@ public partial class GameWorld : Node
         colorRect.Color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         AddChild(colorRect);
 
-        bgmPlayer1 = new AudioStreamPlayer();
-        bgmPlayer1.Bus = "BGM";
-        bgmPlayer2 = new AudioStreamPlayer();
-        bgmPlayer2.Bus = "BGM";
+        bgmPlayer1 = new AudioStreamPlayer { Bus = "BGM" };
+        bgmPlayer2 = new AudioStreamPlayer { Bus = "BGM" };
         AddChild(bgmPlayer1);
         AddChild(bgmPlayer2);
 
