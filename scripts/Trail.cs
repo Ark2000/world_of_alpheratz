@@ -1,6 +1,3 @@
-using Godot;
-using System.Collections.Generic;
-
 public partial class Trail : Line2D
 {
     [Export]

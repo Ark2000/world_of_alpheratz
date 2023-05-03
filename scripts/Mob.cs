@@ -1,5 +1,3 @@
-using Godot;
-
 public partial class Mob : CharacterBody2D
 {
     public virtual void Perish()

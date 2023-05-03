@@ -1,4 +1,3 @@
-using Godot;
 using System.Collections.Generic;
 
 public partial class InfiniteRoad : Node2D

@@ -1,5 +1,3 @@
-using Godot;
-
 public partial class InteractiveMessage : Area2D
 {
 

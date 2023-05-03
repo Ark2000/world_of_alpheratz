@@ -1,5 +1,3 @@
-using Godot;
-
 public partial class EmoBubble : Sprite2D
 {
 	[Export]

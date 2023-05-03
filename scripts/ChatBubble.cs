@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public partial class ChatBubble : Label
 {
 	public bool isPlaying = false;

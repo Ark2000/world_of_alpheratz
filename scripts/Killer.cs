@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public partial class Killer : Area2D
 {
 

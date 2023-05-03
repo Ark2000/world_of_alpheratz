@@ -1,5 +1,3 @@
-using Godot;
-
 public partial class CameraProxy : Node2D
 {
     [Export]

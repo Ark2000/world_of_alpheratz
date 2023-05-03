@@ -1,5 +1,3 @@
-using Godot;
-
 public partial class CollectableItem : Area2D
 {
     [Export]

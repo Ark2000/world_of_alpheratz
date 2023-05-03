@@ -1,5 +1,3 @@
-using Godot;
-
 public enum PlayerState
 {
     Standing,
