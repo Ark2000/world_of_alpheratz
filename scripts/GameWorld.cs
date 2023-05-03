@@ -18,7 +18,7 @@ public partial class GameWorld : Node
     public static string Misc_MenuOpacity { get; set; } = "menu_opacity";
     public static string Misc_WindowScale { get; set; } = "window_scale";
 
-    private static Dictionary<string, Key> defaultKeybindings = new Dictionary<string, Key>()
+    private static readonly Dictionary<string, Key> defaultKeybindings = new Dictionary<string, Key>()
     {
         { InputAction_Up, Key.W },
         { InputAction_Down, Key.S },

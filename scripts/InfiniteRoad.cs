@@ -9,7 +9,7 @@ public partial class InfiniteRoad : Node2D
     public int chunkSize = 1008;
 	[Export]
 	public Node2D chunkProto;
-    private Dictionary<int, Node> loadedChunks = new Dictionary<int, Node>();
+    private readonly Dictionary<int, Node> loadedChunks = new Dictionary<int, Node>();
 
     public override void _Ready()
     {

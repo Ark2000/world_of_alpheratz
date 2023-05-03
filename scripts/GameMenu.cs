@@ -42,7 +42,7 @@ public partial class GameMenu : CanvasLayer
 	[Export]
 	bool pauseMenuMode = false;
 
-	private Stack<Control> menuStack = new Stack<Control>();
+	private readonly Stack<Control> menuStack = new Stack<Control>();
 	private Control currentMenu;
 
     public override void _Ready()
