@@ -1,4 +1,4 @@
-using Godot;
+namespace Alpheratz;
 
 public partial class HUD : CanvasLayer
 {

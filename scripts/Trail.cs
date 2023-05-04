@@ -1,5 +1,4 @@
-using Godot;
-using System.Collections.Generic;
+namespace Alpheratz;
 
 public partial class Trail : Line2D
 {

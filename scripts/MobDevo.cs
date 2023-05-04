@@ -1,4 +1,4 @@
-using Godot;
+namespace Alpheratz;
 
 public partial class MobDevo : Mob
 {
@@ -29,11 +29,11 @@ public partial class MobDevo : Mob
     {
         CreateTween().TweenCallback(Callable.From(()=>{
             CreateTween().SetLoops().TweenCallback(Callable.From(() => {
-                Vector2 newVelocity = Velocity;
-                newVelocity.Y += -jumpForce;
-                Velocity = newVelocity;
-            })).SetDelay(jumpInterval);
-        })).SetDelay(initDelay);
+            Vector2 newVelocity = Velocity;
+            newVelocity.Y += -jumpForce;
+            Velocity = newVelocity;
+        })).SetDelay(jumpInterval);
+    })).SetDelay(initDelay);
 
     }
 

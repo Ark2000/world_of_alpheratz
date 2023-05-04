@@ -4,4 +4,7 @@
 # Addons
 addons/panku_console/
 
+# Mono Specific Ignores
+.vs/
+
 tests/

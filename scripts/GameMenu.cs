@@ -1,4 +1,5 @@
-using Godot;
+namespace Alpheratz;
+
 using System.Collections.Generic;
 
 public partial class GameMenu : CanvasLayer
@@ -41,7 +42,7 @@ public partial class GameMenu : CanvasLayer
 	[Export]
 	bool pauseMenuMode = false;
 
-	private Stack<Control> menuStack = new Stack<Control>();
+	private readonly Stack<Control> menuStack = new();
 	private Control currentMenu;
 
     public override void _Ready()

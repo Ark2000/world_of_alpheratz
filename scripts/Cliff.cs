@@ -1,4 +1,4 @@
-using Godot;
+namespace Alpheratz;
 
 // Hurt player.
 // Teleport player to a specific location.

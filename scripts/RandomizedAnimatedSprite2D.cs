@@ -1,4 +1,4 @@
-using Godot;
+namespace Alpheratz;
 
 //Play Animation starts from random frame
 public partial class RandomizedAnimatedSprite2D : AnimatedSprite2D

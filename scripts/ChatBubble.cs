@@ -1,5 +1,4 @@
-using Godot;
-using System;
+namespace Alpheratz;
 
 public partial class ChatBubble : Label
 {

@@ -1,24 +1,24 @@
-using Godot;
+namespace Alpheratz;
+
 using System.Collections.Generic;
 
 // Singleton
 public partial class GameWorld : Node
 {
+    public static string ConfigFilePath { get; set; } = "user://config.cfg";
+    public static string ConfigSection_Keybindings { get; set; } = "keybindings";
+    public static string InputAction_Up { get; set; } = "up";
+    public static string InputAction_Down { get; set; } = "down";
+    public static string InputAction_Left { get; set; } = "left";
+    public static string InputAction_Right { get; set; } = "right";
+    public static string InputAction_Interact { get; set; } = "interact";
+    public static string ConfigSection_Misc { get; set; } = "misc";
+    public static string Misc_SE { get; set; } = "se_volume";
+    public static string Misc_BGM { get; set; } = "bgm_volume";
+    public static string Misc_MenuOpacity { get; set; } = "menu_opacity";
+    public static string Misc_WindowScale { get; set; } = "window_scale";
 
-    public static string ConfigFilePath = "user://config.cfg";
-    public static string ConfigSection_Keybindings = "keybindings";
-    public static string InputAction_Up = "up";
-    public static string InputAction_Down = "down";
-    public static string InputAction_Left= "left";
-    public static string InputAction_Right = "right";
-    public static string InputAction_Interact = "interact";
-    public static string ConfigSection_Misc = "misc";
-    public static string Misc_SE = "se_volume";
-    public static string Misc_BGM = "bgm_volume";
-    public static string Misc_MenuOpacity = "menu_opacity";
-    public static string Misc_WindowScale = "window_scale";
-
-    private static Dictionary<string, Key> defaultKeybindings = new Dictionary<string, Key>()
+    private static readonly Dictionary<string, Key> defaultKeybindings = new()
     {
         { InputAction_Up, Key.W },
         { InputAction_Down, Key.S },
@@ -40,7 +40,7 @@ public partial class GameWorld : Node
     public AudioStreamPlayer bgmPlayer1;
     public AudioStreamPlayer bgmPlayer2;
 
-    public ConfigFile configFile = new ConfigFile();
+    public ConfigFile configFile = new();
 
     public static GameWorld Instance { get; private set; }
 
@@ -49,9 +49,11 @@ public partial class GameWorld : Node
         Instance = this;
         LoadConfig();
 
-        InputEventKey keyEvent = new InputEventKey();
-        keyEvent.Keycode = Key.W;
-        keyEvent.Pressed = true;
+        InputEventKey keyEvent = new()
+        {
+            Keycode = Key.W,
+            Pressed = true
+        };
         InputMap.AddAction("test_action");
         InputMap.ActionAddEvent("test_action", keyEvent);
 
@@ -61,10 +63,8 @@ public partial class GameWorld : Node
         colorRect.Color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         AddChild(colorRect);
 
-        bgmPlayer1 = new AudioStreamPlayer();
-        bgmPlayer1.Bus = "BGM";
-        bgmPlayer2 = new AudioStreamPlayer();
-        bgmPlayer2.Bus = "BGM";
+        bgmPlayer1 = new AudioStreamPlayer { Bus = "BGM" };
+        bgmPlayer2 = new AudioStreamPlayer { Bus = "BGM" };
         AddChild(bgmPlayer1);
         AddChild(bgmPlayer2);
 
@@ -81,10 +81,9 @@ public partial class GameWorld : Node
         {
             newBGM = GD.Load<AudioStream>(bgmPath);
         }
-        
-        AudioStreamPlayer tmp = bgmPlayer1;
-        bgmPlayer1 = bgmPlayer2;
-        bgmPlayer2 = tmp;
+
+        // Use tuple to swap them
+        (bgmPlayer2, bgmPlayer1) = (bgmPlayer1, bgmPlayer2);
 
         bgmPlayer1.Stream = newBGM;
         bgmPlayer1.Play();
@@ -96,7 +95,7 @@ public partial class GameWorld : Node
 
     public void PlaySFX(string sfxPath, float pitch = 1.0f, float volumeScale = 1.0f)
     {
-        AudioStreamPlayer sfxPlayer = new AudioStreamPlayer();
+        AudioStreamPlayer sfxPlayer = new();
         AddChild(sfxPlayer);
         sfxPlayer.Stream = GD.Load<AudioStream>(sfxPath);
         sfxPlayer.PitchScale = pitch;
@@ -209,7 +208,7 @@ public partial class GameWorld : Node
             return;
         }
 
-        InputEventKey eventKey = new InputEventKey() {Keycode = newKey, Pressed = true};
+        InputEventKey eventKey = new() {Keycode = newKey, Pressed = true};
         InputMap.ActionEraseEvent(inputAction, InputMap.ActionGetEvents(inputAction)[0]);
         InputMap.ActionAddEvent(inputAction, eventKey);
 
@@ -239,10 +238,7 @@ public partial class GameWorld : Node
         configFile.SetValue(ConfigSection_Keybindings, inputAction, (long) newKey);
     }
 
-    public void SaveConfig()
-    {
-        configFile.Save(ConfigFilePath);
-    }
+    public void SaveConfig() => configFile.Save(ConfigFilePath);
 
     public override void _Notification(int what)
     {

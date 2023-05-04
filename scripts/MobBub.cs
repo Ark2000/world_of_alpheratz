@@ -1,4 +1,4 @@
-using Godot;
+namespace Alpheratz;
 
 public partial class MobBub : Mob
 {
@@ -48,7 +48,7 @@ public partial class MobBub : Mob
 
     public void UpdateSprite()
     {
-        animatedSprite2D.FlipH = xInput > 0.0f ? true : false;
+        animatedSprite2D.FlipH = xInput > 0.0f;
 
         if (!IsInstanceValid(collisionShape2D))
         {
