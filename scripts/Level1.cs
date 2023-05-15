@@ -5,7 +5,7 @@ public partial class Level1 : Node2D
     [Export]
     SpecialArea leftArea;
     [Export]
-    Camera2D cam;
+    LynxCamera cam;
     [Export]
     InteractiveMessage rest;
     [Export]
@@ -24,6 +24,8 @@ public partial class Level1 : Node2D
     HUD hud;
     [Export]
     CanvasLayer pauseMenu;
+    [Export]
+    CutsceneMode cutsceneMode;
 
     public int maxHearts = 3;
     public int currentHearts = 3;
@@ -136,8 +138,24 @@ public partial class Level1 : Node2D
         string npc2State = "idle";
 
         npc2_Dialogue.BodyEntered += (Node2D body) => {
+            // Grab camera focus
+            cam.target = npc2;
+            npc2.SetMeta("Zoom", Vector2.One * 3.5f);
+
+            cutsceneMode.EnableCutscene();
+
             npc2State = "talking";
             Tween tween = CreateTween();
+
+            CutsceneMode.CutsceneSkippedEventHandler onCutsceneSkipped = null;
+            onCutsceneSkipped = () => {
+                tween.Kill();
+                cam.target = player;
+                cutsceneMode.CutsceneSkipped -= onCutsceneSkipped;
+                cutsceneMode.DisableCutscene();
+            };
+            cutsceneMode.CutsceneSkipped += onCutsceneSkipped;
+
             tween.TweenCallback(Callable.From(() => {
                 npc2.chatBubble.PlayText("Good moring, Leia! ^_^");
             })).SetDelay(0.5f);
@@ -158,6 +176,11 @@ public partial class Level1 : Node2D
             })).SetDelay(2.0f);
             tween.TweenCallback(Callable.From(() => {
                 npc2State = "idle";
+                // Release camera focus
+                cam.target = player;
+
+                cutsceneMode.DisableCutscene();
+                cutsceneMode.CutsceneSkipped -= onCutsceneSkipped;
             })).SetDelay(2.0f);
             // destroy the observer so it becomes a one-shot event handler
             npc2_Dialogue.QueueFree();

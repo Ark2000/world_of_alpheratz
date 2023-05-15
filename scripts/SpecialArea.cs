@@ -3,16 +3,16 @@ namespace Alpheratz;
 public partial class SpecialArea : Area2D
 {
     [Export]
-    CameraProxy cameraProxy;
+    LynxCamera cam;
     [Export]
     Node2D cameraFocus;
     public override void _Ready()
     {
         BodyEntered += (Node2D body) => {
-            cameraProxy.target = cameraFocus;
+            cam.target = cameraFocus;
         };
         BodyExited += (Node2D body) => {
-            cameraProxy.target = body;
+            cam.target = body;
         };
     }
 }

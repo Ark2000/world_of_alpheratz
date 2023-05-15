@@ -79,7 +79,18 @@ public partial class GameWorld : Node
 
         if (!string.IsNullOrEmpty(bgmPath))
         {
-            newBGM = GD.Load<AudioStream>(bgmPath);
+            if (bgmPath.StartsWith("res://"))
+            {
+                newBGM = GD.Load<AudioStream>(bgmPath);
+            }
+            // We need special handling for using user mp3 files in Godot
+            if (bgmPath.StartsWith("user://"))
+            {
+                FileAccess file = FileAccess.Open(bgmPath, FileAccess.ModeFlags.Read);
+                AudioStreamMP3 streamMP3 = new AudioStreamMP3();
+                streamMP3.Data = file.GetBuffer((long)file.GetLength());
+                newBGM = streamMP3;
+            }
         }
 
         // Use tuple to swap them

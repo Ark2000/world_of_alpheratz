@@ -18,7 +18,17 @@ public partial class TitleScene : Control
 			{
 				menu.ShowMenu(menu.topMenu);
 				CreateTween().TweenProperty(logo, "modulate:a", 1.0f, 0.5f);
-				GameWorld.Instance.PlayBGM("res://sounds/bgm_Grocery Store_ Calm Shop Game Music by HeatleyBros.mp3");
+
+				// User can override the default bgm by placing a file at user://bgm.mp3
+
+				string bgmPath = "res://sounds/bgm_Grocery Store_ Calm Shop Game Music by HeatleyBros.mp3";
+
+				if (FileAccess.FileExists("user://bgm.mp3"))
+				{
+					bgmPath = "user://bgm.mp3";
+				}
+
+				GameWorld.Instance.PlayBGM(bgmPath);
 			}
 		};
 		logo.Modulate = logo.Modulate with {A = 0};

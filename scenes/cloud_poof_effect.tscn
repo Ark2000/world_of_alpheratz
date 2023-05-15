@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/CloudPoofEffect.cs" id="2_kbwkg"]
 
 [node name="CloudPoofEffect" type="AnimatedSprite2D"]
+texture_filter = 1
 position = Vector2(50, 30)
 sprite_frames = ExtResource("1_ikby6")
 autoplay = "default"

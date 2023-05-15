@@ -12,9 +12,10 @@ config_version=5
 
 config/name="world_of_alpheratz"
 run/main_scene="res://scenes/first_scene.tscn"
+config/use_custom_user_dir=true
 config/features=PackedStringArray("4.0", "C#", "Forward Plus")
 run/max_fps=60
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
