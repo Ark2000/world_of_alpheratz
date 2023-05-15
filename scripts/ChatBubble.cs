@@ -2,18 +2,44 @@ namespace Alpheratz;
 
 public partial class ChatBubble : Label
 {
+	[Export]
+	Control handle;
+
 	public bool isPlaying = false;
 	
 	private Vector2 originalPosition;
+	private Vector2 originalHandlePosition;
 
 	public override void _Ready()
 	{
 		Hide();
 		originalPosition = Position;
+		originalHandlePosition = handle.Position;
 
 		// Editor may not work, so we set it here.
 		// bug report: https://github.com/godotengine/godot/issues/76668
 		GrowVertical = GrowDirection.Begin;
+
+        if (HasNode("/root/Console"))
+        {
+            GetNode("/root/Console").Call("register_env", Name + GetInstanceId(), this);
+        }
+	}
+
+	public override void _PhysicsProcess(double delta)
+	{
+		Camera2D cam = GetViewport().GetCamera2D();
+
+		float camHalfW = GetViewport().GetVisibleRect().Size.X / cam.Zoom.X / 2.0f;
+		float left = cam.GetScreenCenterPosition().X - camHalfW;
+		float right = cam.GetScreenCenterPosition().X + camHalfW;
+
+		float chatboxLeftX = GetGlobalRect().Position.X;
+		float targetX = Mathf.Clamp(chatboxLeftX, left, right - GetGlobalRect().Size.X);
+
+		SetGlobalPosition(GlobalPosition with {X = targetX});
+		float hx = (originalHandlePosition + (originalPosition - Position)).X;
+		handle.Position = handle.Position with {X = hx};
 	}
 
 	public void PlayText(string text)

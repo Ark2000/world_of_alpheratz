@@ -1,41 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://boihckp5wsd6f"]
+[gd_scene load_steps=7 format=3 uid="uid://boihckp5wsd6f"]
 
 [ext_resource type="Texture2D" uid="uid://b7yd2iv57o66s" path="res://images/chatbubble.png" id="1_yt8s8"]
 [ext_resource type="FontFile" uid="uid://g0840nh810ty" path="res://font/at01.ttf" id="2_1e528"]
 [ext_resource type="Texture2D" uid="uid://bwjmee3mhpng1" path="res://images/chatbubble_tail.png" id="2_03o64"]
 [ext_resource type="Script" path="res://scripts/ChatBubble.cs" id="2_6y4rj"]
 
+[sub_resource type="FontVariation" id="FontVariation_ivtrr"]
+base_font = ExtResource("2_1e528")
+spacing_space = -2
+spacing_top = -2
+
 [sub_resource type="LabelSettings" id="LabelSettings_p6xhi"]
 line_spacing = 0.0
-font = ExtResource("2_1e528")
+font = SubResource("FontVariation_ivtrr")
 font_color = Color(0, 0, 0, 1)
-shadow_size = 0
-shadow_color = Color(0.678431, 0.678431, 0.678431, 0.25098)
 
-[node name="ChatBubble" type="Label"]
+[node name="ChatBubble" type="Label" node_paths=PackedStringArray("handle")]
 texture_filter = 1
 custom_minimum_size = Vector2(16, 0)
 anchors_preset = -1
-offset_left = -3.0
-offset_top = -23.0
-offset_right = 13.0
-offset_bottom = -10.0
+offset_left = -7.0
+offset_top = -14.0
+offset_right = 134.0
+offset_bottom = -1.0
 grow_vertical = 0
 text = "^_^ Hello, How are you today?"
 label_settings = SubResource("LabelSettings_p6xhi")
+vertical_alignment = 1
 script = ExtResource("2_6y4rj")
+handle = NodePath("Tail")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 show_behind_parent = true
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_yt8s8")
@@ -51,9 +56,9 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = -6.0
-offset_right = 19.0
-offset_bottom = 10.0
+offset_left = 7.0
+offset_top = -8.0
+offset_right = 23.0
+offset_bottom = 8.0
 grow_vertical = 0
 texture = ExtResource("2_03o64")

@@ -62,6 +62,7 @@ size = Vector2(12, 18)
 size = Vector2(12, 3)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "spriteContainer", "collisionShape2D", "emoBubble", "mobKiller", "leftWalkingDustParticles", "rightWalkingDustParticles", "chatBubble")]
+texture_filter = 1
 collision_layer = 2
 script = ExtResource("1_cpe0l")
 animatedSprite = NodePath("Node2D/AnimatedSprite2D")
@@ -75,9 +76,10 @@ chatBubble = NodePath("ChatBubble")
 
 [node name="ChatBubble" parent="." instance=ExtResource("6_8lg8a")]
 anchors_preset = 0
-offset_top = -46.0
-offset_right = 138.0
-offset_bottom = -29.0
+offset_left = 1.0
+offset_top = -44.0
+offset_right = 142.0
+offset_bottom = -31.0
 
 [node name="RightDustParticles" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_1bf2b")
