@@ -210,57 +210,17 @@ public partial class PlatformerPlayer : CharacterBody2D
 			velocity.X = Mathf.Lerp(velocity.X, 0.0f, (float)(FRICTION * delta));
 		}
 
-        switch (currentState)
+        currentState = currentState switch
         {
-            case PlayerState.Standing:
-                if (IsOnFloor())
-                {
-                    if (x_input != 0.0f)
-                    {
-                        currentState = PlayerState.Walking;
-                    }
-                }
-                break;
-            case PlayerState.Walking:
-                if (IsOnFloor())
-                {
-                    if (x_input == 0.0f)
-                    {
-                        currentState = PlayerState.Standing;
-                    }
-                }
-                break;
-            case PlayerState.Jumping:
-                if (velocity.Y > 0.0f)
-                {
-                    currentState = PlayerState.Falling;
-                }
-                if (!jump_pressed && velocity.Y < -JUMP_FORCE / 2.0f)
-                {
-                    velocity.Y = -JUMP_FORCE * 0.5f;
-					currentState = PlayerState.Falling;
-                }
-                break;
-            case PlayerState.Falling:
-                if (IsOnFloor())
-                {
-                    currentState = PlayerState.Standing;
-                }
-                break;
-            case PlayerState.Hurting:
-                if (IsOnFloor())
-				{
-					currentState = PlayerState.Standing;
-				}
-				break;
-
-			case PlayerState.Ducking:
-				if (!duck_pressed)
-				{
-					currentState = PlayerState.Standing;
-				}
-				break;
-        }
+            PlayerState.Standing when IsOnFloor() && x_input != 0.0f => PlayerState.Walking,
+            PlayerState.Walking when IsOnFloor() && x_input == 0.0f => PlayerState.Standing,
+            PlayerState.Jumping when velocity.Y > 0.0f 
+            || !jump_pressed && velocity.Y < -JUMP_FORCE / 2.0f => PlayerState.Falling,
+            PlayerState.Falling when IsOnFloor() => PlayerState.Standing,
+            PlayerState.Hurting when IsOnFloor() => PlayerState.Standing,
+            PlayerState.Ducking when !duck_pressed => PlayerState.Standing,
+            _ => currentState
+        };
 
         if (currentState is PlayerState.Standing or PlayerState.Walking)
         {
