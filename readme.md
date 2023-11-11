@@ -1,6 +1,6 @@
 # Introduction
 
-World of Alpheratz is a simple retro platformer demo game made with Godot 4.
+World of Alpheratz is a simple retro platformer demo game made with Godot 4.1 (Mono Version)
 
 Currently it has only one level with basic mechanics, if you guys like it I will continue to develop it in my free time or contact me if you want to help me with the development (it will not be a commercial game).
 
